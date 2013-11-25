@@ -1,0 +1,4 @@
+\DeclareDatamodelEntrytypes{manuscript}
+\DeclareDatamodelFields{datation,shortLibrary,columns,languages, collection,usualtitle,shelfmark}
+\DeclareDatamodelEntryfields[manuscript]{datation,shortLibrary,columns,languages, collection,usualtitle,shelfmark}
+
