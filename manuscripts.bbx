@@ -7,19 +7,15 @@
 \DeclareBibliographyDriver{manuscript}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \usebibmacro{author}%
-  \setunit{\labelnamepunct}\newblock
-  \usebibmacro{title}%
+  \usebibmacro{location}%
   \newunit
   \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
   \newunit\newblock
   \printfield{howpublished}%
   \newunit\newblock
   \printfield{note}%
   \newunit\newblock
-  \usebibmacro{location+date}%
+  \usebibmacro{date/dating}%
   \newunit\newblock
   \iftoggle{bbx:url}
     {\usebibmacro{url+urldate}}
@@ -34,4 +30,12 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{finentry}}
+
+\newbibmacro{date/dating}{%
+	\iffieldundef{dating}{\usebibmacro{date}}
+	  {\printfield{dating}}%
+}
+\newbibmacro{location}{%
+	\printlist{location}%
+}
 \endinput
