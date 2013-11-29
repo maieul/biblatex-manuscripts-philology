@@ -1,4 +1,6 @@
 \DeclareDatamodelEntrytypes{manuscript}
-\DeclareDatamodelFields[type=field,datatype=literal]{datation,shortlibrary,columns, collection,usualtitle,shelfmark}
-\DeclareDatamodelEntryfields[manuscript]{datation,shortLibrary,columns,languages, collection,usualtitle,shelfmark}
+\DeclareDatamodelFields[type=field,datatype=literal]{dating,shortlibrary,columns, collection,usualtitle,shelfmark,support,columns}
+\DeclareDatamodelFields[type=list,datatype=name]{Scribe,Owner}
+\DeclareDatamodelFields[type=list,datatype=literal]{Origin}
+\DeclareDatamodelEntryfields[manuscript]{dating,shortLibrary,columns,languages, collection,usualtitle,shelfmark,support,columns,origin,scribe}
 
