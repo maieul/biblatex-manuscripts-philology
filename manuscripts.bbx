@@ -7,7 +7,8 @@
 \DeclareBibliographyDriver{manuscript}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \usebibmacro{location}%
+  \usebibmacro{location+library+series+shelfmark}%
+  \newunit
   \newunit
   \printlist{language}%
   \newunit\newblock
@@ -31,11 +32,35 @@
     {}%
   \usebibmacro{finentry}}
 
+\renewbibmacro{related:init}{}
+\renewbibmacro{related}{}
 \newbibmacro{date/dating}{%
 	\iffieldundef{dating}{\usebibmacro{date}}
 	  {\printfield{dating}}%
 }
-\newbibmacro{location}{%
-	\printlist{location}%
+
+\DeclareListFormat{manuscripts:location}{%
+  \usebibmacro{list:delim}{\manuscriptlocation{#1}}%
+  \manuscriptlocation{#1}\isdot%
+  \usebibmacro{list:andothers}}
+  
+\newbibmacro{location+library+series+shelfmark}{%
+	\printlist[manuscripts:location]{location}%
+	\setunit{\locationlibrary}%
+	\printfield{library}%
+	\setunit{\librarycollection}%
+	\usebibmacro{collection+shelfmark}%
 }
+\newbibmacro{collection+shelfmark}{%
+	\printtext[title]{%
+	  \printfield{collection}%
+	  \setunit{\seriesshelfmark}%
+	  \printfield{shelfmark}%
+	}%
+}
+\newcommand{\librarycollection}{\addcomma\addspace}
+\newcommand{\seriesshelfmark}{\addspace}
+\newcommand{\locationlibrary}{\addcolon}
+\newcommand{\manuscriptlocation}[1]{\textsc{#1}}
+\newcommand{\collectionshelfmark}[1]{\textsc{#1}}
 \endinput
