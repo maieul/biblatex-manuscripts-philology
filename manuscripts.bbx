@@ -54,13 +54,12 @@
 \newbibmacro{collection+shelfmark}{%
 	\printtext[title]{%
 	  \printfield{collection}%
-	  \setunit{\seriesshelfmark}%
+	  \setunit{\collectionshelfmark}%
 	  \printfield{shelfmark}%
 	}%
 }
 \newcommand{\librarycollection}{\addcomma\addspace}
-\newcommand{\seriesshelfmark}{\addspace}
+\newcommand{\collectionshelfmark}{\addspace}
 \newcommand{\locationlibrary}{\addcolon}
 \newcommand{\mklocation}[1]{\textsc{#1}}
-\newcommand{\collectionshelfmark}[1]{\textsc{#1}}
 \endinput
