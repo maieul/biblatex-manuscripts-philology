@@ -40,7 +40,7 @@
 }
 
 \DeclareListFormat{manuscripts:location}{%
-  \usebibmacro{list:delim}{\manuscriptlocation{#1}}%
+  \usebibmacro{list:delim}{\mklocation{#1}}%
   \manuscriptlocation{#1}\isdot%
   \usebibmacro{list:andothers}}
   
@@ -61,6 +61,6 @@
 \newcommand{\librarycollection}{\addcomma\addspace}
 \newcommand{\seriesshelfmark}{\addspace}
 \newcommand{\locationlibrary}{\addcolon}
-\newcommand{\manuscriptlocation}[1]{\textsc{#1}}
+\newcommand{\mklocation}[1]{\textsc{#1}}
 \newcommand{\collectionshelfmark}[1]{\textsc{#1}}
 \endinput
