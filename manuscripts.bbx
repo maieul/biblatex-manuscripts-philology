@@ -70,4 +70,11 @@
 \newcommand{\collectionshelfmarkpunct}{\addspace}
 \newcommand{\locationlibrarypunct}{\addcolon}
 \newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
+
+\DeclareSortingScheme{entrykey}{
+  \sort{
+    \field{sortkey}
+    \field{entrykey}
+  }
+}
 \endinput
