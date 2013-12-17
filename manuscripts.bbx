@@ -46,20 +46,20 @@
   
 \newbibmacro{location+library+series+shelfmark}{%
 	\printlist[manuscripts:location]{location}%
-	\setunit{\locationlibrary}%
+	\setunit{\locationlibrarypunct}%
 	\printfield{library}%
-	\setunit{\librarycollection}%
+	\setunit{\librarycollectionpunct}%
 	\usebibmacro{collection+shelfmark}%
 }
 \newbibmacro{collection+shelfmark}{%
 	\printtext[title]{%
 	  \printfield{collection}%
-	  \setunit{\collectionshelfmark}%
+	  \setunit{\collectionshelfmarkpunct}%
 	  \printfield{shelfmark}%
 	}%
 }
-\newcommand{\librarycollection}{\addcomma\addspace}
-\newcommand{\collectionshelfmark}{\addspace}
-\newcommand{\locationlibrary}{\addcolon}
+\newcommand{\librarycollectionpunct}{\addcomma\addspace}
+\newcommand{\collectionshelfmarkpunct}{\addspace}
+\newcommand{\locationlibrarypunct}{\addcolon}
 \newcommand{\mklocation}[1]{\textsc{#1}}
 \endinput
