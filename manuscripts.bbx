@@ -41,7 +41,7 @@
 
 \DeclareListFormat{manuscripts:location}{%
   \usebibmacro{list:delim}{\mklocation{#1}}%
-  \manuscriptlocation{#1}\isdot%
+  \mklocation{#1}\isdot%
   \usebibmacro{list:andothers}}
   
 \newbibmacro{location+library+series+shelfmark}{%
@@ -52,7 +52,7 @@
 	\usebibmacro{collection+shelfmark}%
 }
 \newbibmacro{collection+shelfmark}{%
-	\printtext[title]{%
+	\mkbibemph{%
 	  \printfield{collection}%
 	  \setunit{\collectionshelfmarkpunct}%
 	  \printfield{shelfmark}%
@@ -61,5 +61,5 @@
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
 \newcommand{\collectionshelfmarkpunct}{\addspace}
 \newcommand{\locationlibrarypunct}{\addcolon}
-\newcommand{\mklocation}[1]{\textsc{#1}}
+\newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
 \endinput
