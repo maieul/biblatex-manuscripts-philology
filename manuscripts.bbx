@@ -16,7 +16,7 @@
   \newunit\newblock
   \printfield{note}%
   \newunit\newblock
-  \usebibmacro{support}
+  \usebibmacro{support+columns}
   \newunit
   \usebibmacro{date/dating}%
   \newunit\newblock
@@ -61,7 +61,11 @@
 	}%
 }
 \DeclareFieldFormat{support}{\bibstring{#1}}
-\newbibmacro{support}{\printfield{support}}
+\newbibmacro{support+columns}{%
+  \printfield{support}%
+  \newunit%
+  \iffieldundef{columns}{}{\bibstring{\strfield{columns}column}}%
+  }
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
 \newcommand{\collectionshelfmarkpunct}{\addspace}
 \newcommand{\locationlibrarypunct}{\addcolon}

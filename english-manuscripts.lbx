@@ -1,12 +1,15 @@
 \ProvidesFile{french-manuscripts.lbx}[2013/12/17\space v1.0.0\space manuscripts biblatex localisation]
 \InheritBibliographyExtras{french}
 
-
+\NewBibliographyString{1column}
+\NewBibliographyString{2column}
 \NewBibliographyString{paper}
 \NewBibliographyString{papyrus}
 \NewBibliographyString{pergament}
 
 \DeclareBibliographyStrings{%
+  1column = {one column}{1\space col\adddot},
+  2column = {two columns}{2\space col\adddot},
   paper   = {paper}{pap\adddotspace},
   papyrus = {papyrus}{papy\adddotspace},
   pergament = {pergament}{perg\adddotspace}
