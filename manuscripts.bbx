@@ -16,6 +16,8 @@
   \newunit\newblock
   \printfield{note}%
   \newunit\newblock
+  \usebibmacro{support}
+  \newunit
   \usebibmacro{date/dating}%
   \newunit\newblock
   \iftoggle{bbx:url}
@@ -58,6 +60,8 @@
 	  \printfield{shelfmark}%
 	}%
 }
+\DeclareFieldFormat{support}{\bibstring{#1}}
+\newbibmacro{support}{\printfield{support}}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
 \newcommand{\collectionshelfmarkpunct}{\addspace}
 \newcommand{\locationlibrarypunct}{\addcolon}
