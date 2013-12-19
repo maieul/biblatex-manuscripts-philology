@@ -23,10 +23,8 @@
   \iftoggle{bbx:url}
     {\usebibmacro{url+urldate}}
     {}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
+  \setunit{\datingpages}
+  \usebibmacro{manuscript:pages}
   \newunit\newblock
   \iftoggle{bbx:related}
     {\usebibmacro{related:init}%
@@ -45,7 +43,12 @@
   \usebibmacro{list:delim}{\mklocation{#1}}%
   \mklocation{#1}\isdot%
   \usebibmacro{list:andothers}}
-  
+
+\newcommand{\verso}{v}
+\newcommand{\recto}{r}
+\newbibmacro{manuscript:pages}{%
+	\printfield{pages}%
+} 
 \newbibmacro{location+library+series+shelfmark}{%
 	\printlist[manuscripts:location]{location}%
 	\setunit{\locationlibrarypunct}%
@@ -66,11 +69,12 @@
   \newunit%
   \iffieldundef{columns}{}{\bibstring{\strfield{columns}column}}%
   }
+\newcommand{\datingpages}{\adddot\addcomma\addspace}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
 \newcommand{\collectionshelfmarkpunct}{\addspace}
 \newcommand{\locationlibrarypunct}{\addcolon}
 \newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
-
+\DeclareNumChars*{vr}
 \DeclareSortingScheme{entrykey}{
   \sort{
     \field{sortkey}
