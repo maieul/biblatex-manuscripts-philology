@@ -73,6 +73,13 @@
   \iffieldundef{columns}{}{\bibstring{\strfield{columns}column}}%
   }
 
+\newcommand{\mkshcite}[1]{#1}
+\DeclareCiteCommand{\shcite}[\mkshcite]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{cite:shorthand}}
+  {\multicitedelim}
+  {\usebibmacro{cite:postnote}}
 \DeclareStyleSourcemap{
 	\maps[datatype=bibtex]{
 		\map{
