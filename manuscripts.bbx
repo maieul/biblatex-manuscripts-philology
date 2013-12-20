@@ -72,6 +72,16 @@
   \newunit%
   \iffieldundef{columns}{}{\bibstring{\strfield{columns}column}}%
   }
+
+\DeclareStyleSourcemap{
+	\maps[datatype=bibtex]{
+		\map{
+			\pertype{manuscript}
+			\step[fieldsource=entrykey]
+			\step[fieldset=shorthand, origfieldval]
+      }
+  }
+}
 \newcommand{\pagetotalpunct}{\addslash}
 \newcommand{\datingpages}{\isdot\addcomma\addspace}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
@@ -79,10 +89,4 @@
 \newcommand{\locationlibrarypunct}{\addcolon}
 \newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
 \DeclareNumChars*{vr}
-\DeclareSortingScheme{entrykey}{
-  \sort{
-    \field{sortkey}
-    \field{entrykey}
-  }
-}
 \endinput
