@@ -25,11 +25,12 @@
     {}%
   \setunit{\datingpages}
   \usebibmacro{manuscript:pages}
-  \newunit\newblock
   \iftoggle{bbx:related}
-    {\usebibmacro{related:init}%
+    {\newunit\newblock%
+     \usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
+  \usebibmacro{annotation}
   \usebibmacro{finentry}}
 
 \renewbibmacro{related:init}{}
@@ -38,7 +39,10 @@
 	\iffieldundef{dating}{\usebibmacro{date}}
 	  {\printfield{dating}}%
 }
-
+\newbibmacro{annotation}{%
+  \iftoggle{shorthand:details}{%
+    \iffieldundef{annotation}{}{\finentrypunct\setunit{}\par\unspace\printfield{annotation}}}{}%
+}
 \DeclareListFormat{manuscripts:location}{%
   \usebibmacro{list:delim}{\mklocation{#1}}%
   \mklocation{#1}\isdot%
@@ -74,6 +78,21 @@
   }
 
 \newcommand{\mkshcite}[1]{#1}
+
+\newtoggle{shorthand:details}
+\defbibenvironment{details}
+  {\toggletrue{shorthand:details}
+  \list
+     {\printfield[shorthandwidth]{shorthand}}
+     {\setlength{\labelwidth}{\shorthandwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+      \renewcommand*{\makelabel}[1]{##1\hss}}}
+  {\endlist}
+  {\item}
 \DeclareCiteCommand{\shcite}[\mkshcite]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
