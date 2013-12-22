@@ -88,7 +88,8 @@
   {\toggletrue{shorthand:details}
   \list
      {\printfield[shorthandwidth]{shorthand}}
-     {\setlength{\labelwidth}{\shorthandwidth}%
+     {\setlength{\listparindent}{\parindent}%
+      \setlength{\labelwidth}{\shorthandwidth}%
       \setlength{\leftmargin}{\labelwidth}%
       \setlength{\labelsep}{\biblabelsep}%
       \addtolength{\leftmargin}{\labelsep}%
