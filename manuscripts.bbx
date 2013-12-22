@@ -39,6 +39,8 @@
 	\iffieldundef{dating}{\usebibmacro{date}}
 	  {\printfield{dating}}%
 }
+
+
 \newbibmacro{annotation}{%
   \iftoggle{shorthand:details}{%
     \iffieldundef{annotation}{}{\finentrypunct\setunit{}\par\unspace\printfield{annotation}}}{}%
@@ -50,7 +52,8 @@
 
 \newcommand{\verso}{v}
 \newcommand{\recto}{r}
-\DeclareRangeCommands*{\recto\verso}
+\NumCheckSetup{\def\verso{}\def\recto{}}
+
 \newbibmacro{manuscript:pages}{%
 	\printfield{pages}%
 	\iffieldundef{pagetotal}{}%
