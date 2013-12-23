@@ -30,11 +30,26 @@
      \usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{annotation}
+  \usebibmacro{annotation+catalog}%
   \usebibmacro{finentry}}
 
-\renewbibmacro{related:init}{}
-\renewbibmacro{related}{}
+\newbibmacro{annotation+catalog}{%
+	\usebibmacro{annotation}%
+	\usebibmacro{catalog}%
+}
+
+\DeclareFieldFormat{catalog}{%
+  \cataloglabel{%
+    \bibstring{catalog}%
+    \cataloglabelpunct}%
+  #1%
+}
+\newbibmacro{catalog}{%
+	\iftoggle{shorthand:details}{%
+	  \iffieldundef{catalog}{}%
+	    {\finentrypunct\setunit{}\par\unspace\printfield{catalog}}}%
+	    {}%
+}
 \newbibmacro{date/dating}{%
 	\iffieldundef{dating}{\usebibmacro{date}}
 	  {\printfield{dating}}%
@@ -111,8 +126,16 @@
 			\step[fieldsource=entrykey]
 			\step[fieldset=shorthand, origfieldval]
       }
+        \map[overwrite]{
+        	\pertype{manuscript}
+			\step[fieldsource=catalog,final]
+		 	\step[fieldset=catalog,fieldvalue={\cites}]
+			\step[origfieldval,fieldset=catalog,append]
+        }
   }
 }
+\newcommand{\cataloglabel}[1]{\textbf{#1}}
+\newcommand{\cataloglabelpunct}{\addcolon}
 \newcommand{\pagetotalpunct}{\addslash}
 \newcommand{\datingpages}{\isdot\addcomma\addspace}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
