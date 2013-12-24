@@ -2,8 +2,110 @@
 [\abx@bbxid]
 
 \RequireBibliographyStyle{verbose}
+% This file is organiszed from the must close of user to the less close.
+
+% 1. Some commands to be redefine
+
+\newcommand{\cataloglabel}[1]{\textbf{#1}}
+\newcommand{\cataloglabelpunct}{\addcolon}
+\newcommand{\pagetotalpunct}{\addslash}
+\newcommand{\datingpages}{\isdot\addcomma\addspace}
+\newcommand{\librarycollectionpunct}{\addcomma\addspace}
+\newcommand{\collectionshelfmarkpunct}{\addspace}
+\newcommand{\locationlibrarypunct}{\addcolon}
+\newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
+\newcommand{\mkshcite}[1]{#1}
+
+\def\verso{v}
+\def\recto{r}
+
+% 2. Some macros
 
 
+\newbibmacro{annotation}{%
+  \iftoggle{shorthand:details}{%
+    \iffieldundef{annotation}{}{\finentrypunct\setunit{}\par\unspace\printfield{annotation}}}{}%
+}
+
+\newbibmacro{annotation+catalog}{%
+	\usebibmacro{annotation}%
+	\usebibmacro{catalog}%
+}
+
+\newbibmacro{catalog}{%
+	\iftoggle{shorthand:details}{%
+	  \iffieldundef{catalog}{}%
+	    {\finentrypunct\setunit{}\par\unspace\printfield{catalog}}}%
+	    {}%
+}
+
+\newbibmacro{collection+shelfmark}{%
+	\mkbibemph{%
+	  \printfield{collection}%
+	  \setunit{\collectionshelfmarkpunct}%
+	  \printfield{shelfmark}%
+	}%
+}
+
+\newbibmacro{date/dating}{%
+	\iffieldundef{dating}{\usebibmacro{date}}
+	  {\printfield{dating}}%
+}
+
+\newbibmacro{location+library+series+shelfmark}{%
+	\printlist[manuscripts:location]{location}%
+	\setunit{\locationlibrarypunct}%
+	\printfield{library}%
+	\setunit{\librarycollectionpunct}%
+	\usebibmacro{collection+shelfmark}%
+}
+
+\DeclareListFormat{manuscripts:location}{%
+  \usebibmacro{list:delim}{\mklocation{#1}}%
+  \mklocation{#1}\isdot%
+  \usebibmacro{list:andothers}}
+  
+\newbibmacro{manuscript:pages}{%
+	\printfield{pages}%
+	\iffieldundef{pagetotal}{}%
+	  {\setunit{\pagetotalpunct}\printfield{pagetotal}}%
+} 
+
+\newbibmacro{support+columns}{%
+  \printfield{support}%
+  \newunit%
+  \iffieldundef{columns}{}{\bibstring{\strfield{columns}column}}%
+  }
+
+% 3. Some Field or List Format
+\DeclareFieldFormat{catalog}{%
+  \cataloglabel{%
+    \bibstring{catalog}%
+    \cataloglabelpunct}%
+  #1%
+}
+\DeclareFieldFormat{support}{\bibstring{#1}}
+
+% 4. Printshorthands Environment
+
+\newtoggle{shorthand:details}
+\defbibenvironment{details}
+  {\toggletrue{shorthand:details}
+  \list
+     {\printfield[shorthandwidth]{shorthand}}
+     {\setlength{\listparindent}{\parindent}%
+      \setlength{\labelwidth}{\shorthandwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+      \renewcommand*{\makelabel}[1]{##1\hss}}}
+  {\endlist}
+  {\item}
+ 
+% 5. Others
+%% 5.1 Driver
 \DeclareBibliographyDriver{manuscript}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
@@ -33,93 +135,16 @@
   \usebibmacro{annotation+catalog}%
   \usebibmacro{finentry}}
 
-\newbibmacro{annotation+catalog}{%
-	\usebibmacro{annotation}%
-	\usebibmacro{catalog}%
-}
-
-\DeclareFieldFormat{catalog}{%
-  \cataloglabel{%
-    \bibstring{catalog}%
-    \cataloglabelpunct}%
-  #1%
-}
-\newbibmacro{catalog}{%
-	\iftoggle{shorthand:details}{%
-	  \iffieldundef{catalog}{}%
-	    {\finentrypunct\setunit{}\par\unspace\printfield{catalog}}}%
-	    {}%
-}
-\newbibmacro{date/dating}{%
-	\iffieldundef{dating}{\usebibmacro{date}}
-	  {\printfield{dating}}%
-}
-
-
-\newbibmacro{annotation}{%
-  \iftoggle{shorthand:details}{%
-    \iffieldundef{annotation}{}{\finentrypunct\setunit{}\par\unspace\printfield{annotation}}}{}%
-}
-\DeclareListFormat{manuscripts:location}{%
-  \usebibmacro{list:delim}{\mklocation{#1}}%
-  \mklocation{#1}\isdot%
-  \usebibmacro{list:andothers}}
-
-\def\verso{v}
-\def\recto{r}
-\NumCheckSetup{\def\verso{}\def\recto{}}
-
-\newbibmacro{manuscript:pages}{%
-	\printfield{pages}%
-	\iffieldundef{pagetotal}{}%
-	  {\setunit{\pagetotalpunct}\printfield{pagetotal}}%
-} 
-
-\newbibmacro{location+library+series+shelfmark}{%
-	\printlist[manuscripts:location]{location}%
-	\setunit{\locationlibrarypunct}%
-	\printfield{library}%
-	\setunit{\librarycollectionpunct}%
-	\usebibmacro{collection+shelfmark}%
-}
-\newbibmacro{collection+shelfmark}{%
-	\mkbibemph{%
-	  \printfield{collection}%
-	  \setunit{\collectionshelfmarkpunct}%
-	  \printfield{shelfmark}%
-	}%
-}
-\DeclareFieldFormat{support}{\bibstring{#1}}
-\newbibmacro{support+columns}{%
-  \printfield{support}%
-  \newunit%
-  \iffieldundef{columns}{}{\bibstring{\strfield{columns}column}}%
-  }
-
-\newcommand{\mkshcite}[1]{#1}
-
-\newtoggle{shorthand:details}
-\defbibenvironment{details}
-  {\toggletrue{shorthand:details}
-  \list
-     {\printfield[shorthandwidth]{shorthand}}
-     {\setlength{\listparindent}{\parindent}%
-      \setlength{\labelwidth}{\shorthandwidth}%
-      \setlength{\leftmargin}{\labelwidth}%
-      \setlength{\labelsep}{\biblabelsep}%
-      \addtolength{\leftmargin}{\labelsep}%
-      \setlength{\itemsep}{\bibitemsep}%
-      \setlength{\parsep}{\bibparsep}%
-      \renewcommand*{\makelabel}[1]{##1\hss}}}
-  {\endlist}
-  {\item}
+%% 5.2 Citation command
 \DeclareCiteCommand{\shcite}[\mkshcite]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
    \usebibmacro{cite:shorthand}}
   {\multicitedelim}
   {\usebibmacro{cite:postnote}}
-\DeclareStyleSourcemap{
+
+%% 5.3 Mapping
+ \DeclareStyleSourcemap{
 	\maps[datatype=bibtex]{
 		\map{
 			\pertype{manuscript}
@@ -134,13 +159,11 @@
         }
   }
 }
-\newcommand{\cataloglabel}[1]{\textbf{#1}}
-\newcommand{\cataloglabelpunct}{\addcolon}
-\newcommand{\pagetotalpunct}{\addslash}
-\newcommand{\datingpages}{\isdot\addcomma\addspace}
-\newcommand{\librarycollectionpunct}{\addcomma\addspace}
-\newcommand{\collectionshelfmarkpunct}{\addspace}
-\newcommand{\locationlibrarypunct}{\addcolon}
-\newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
+
+%% 5.4 NumCheckSetup (should not be changed)
+
+
+\NumCheckSetup{\def\verso{}\def\recto{}}
+
 
 \endinput
