@@ -2,3 +2,23 @@ biblatex-manuscripts-philology
 ==============================
 
 Biblatex style and datatools to describe manuscripts in the perspective of a critical edition of text.
+
+This work contains:
+- The biblatex styles files: 
+  - manuscripts.bbx
+  - manuscripts.dbx
+  - french-manuscripts.lbx
+  - english-manuscripts.lbx
+- The documentation files:
+  - biblatex-manuscripts-philology.tex
+  - the derivated file: biblatex-manuscripts-philology.pdf
+- The example files:
+  - example/example.tex
+  - example/example.bib
+  - the derivated file example/example.pdf
+- The packaging tool files:
+  - makefile
+  - latexmkrc
+- This README file
+
+All features can be requested in https://github.com/maieul/biblatex-manuscripts-philology/issues
