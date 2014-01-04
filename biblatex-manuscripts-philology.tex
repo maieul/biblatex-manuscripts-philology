@@ -8,6 +8,7 @@
 \setmonofont[Scale=MatchLowercase]{DejaVu Sans Mono}
 \usepackage{shortvrb}
 \usepackage{pifont}
+\usepackage{minted}
 % Usefull commands
 \newcommand{\biblatex}{biblatex\xspace}
 \pretocmd{\bibfield}{\sloppy}{}{}
@@ -49,4 +50,38 @@ This package was created for Maïeul Rouquette's PHD\footnote{\url{http://apocry
 All issues can be submitted, in French or English, in the GitHub issues page\footnote{\url{https://github.com/maieul/biblatex-manuscripts-philology/issues}.}.
 
 
+\section{New type and fields}
+
+This package defines one new bibtype \bibtype{manuscript}, which is to be used to defined a manuscript.
+
+This bibtype has these mandatory fields:
+
+\begin{fieldlist}
+
+\fielditem{location}{literal} the city or place where the manuscript is kept. For example: \verb+Paris+ or \verb+Oxford+. 
+
+\fielditem{library}{literal} the library where the manuscript is kept. For example: \verb+Bibliothèque Nationale de France+.
+
+\fielditem{collection}{literal} the collection in the library. For example: \verb+Supplément grec+.
+
+\fielditem{shelfmark}{literal} the shelfmark in the collection. For example: \verb+241+.
+\end{fieldlist}
+
+This bibtype can use the optional fields:
+
+\begin{fieldlist}
+\fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
+
+\fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined : \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
+
+\fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key : \texttt{folio}.
+\end{fieldlist}
+\section{Use}
+\subsection{Loading}
+
+When loading the \biblatex package, use the option \opt{bibstyle} with value equal to \opt{manuscripts}.
+
+\begin{minted}{latex}
+\usepackage[bibstyle=manuscripts,…]{biblatex}
+\end{minted}
 \end{document}
