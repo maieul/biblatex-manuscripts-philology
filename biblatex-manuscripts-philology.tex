@@ -58,11 +58,12 @@ This bibtype has these mandatory fields:
 
 \begin{fieldlist}
 
+\fielditem{collection}{literal} the collection in the library. For example: \verb+Supplément grec+.
+
 \fielditem{location}{literal} the city or place where the manuscript is kept. For example: \verb+Paris+ or \verb+Oxford+. 
 
 \fielditem{library}{literal} the library where the manuscript is kept. For example: \verb+Bibliothèque Nationale de France+.
 
-\fielditem{collection}{literal} the collection in the library. For example: \verb+Supplément grec+.
 
 \fielditem{shelfmark}{literal} the shelfmark in the collection. For example: \verb+241+.
 \end{fieldlist}
@@ -70,12 +71,46 @@ This bibtype has these mandatory fields:
 This bibtype can use the optional fields:
 
 \begin{fieldlist}
+
+\fielditem{bookpagination}{key} the pagination of the manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \texttt{folio}. The value of this field is to be used for printing the \bibfield{pages} and \bibfield{pagetotal}.
+
+\fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed : \verb+1+ or \verb+2+.
+
 \fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
+
+\fielditem{origin}{litteral} the place(s) where the manuscript was written.
+
+\fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
+
+\fielditem{pagetotal}{integer} the total number of page in the manuscript.
+
+
+\fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
+
+\fielditem{scribe}{name} the scribe(s) who wrote the manuscript.
+
+\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the key will be used as shorthand.
 
 \fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined : \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
 
-\fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key : \texttt{folio}.
 \end{fieldlist}
+
+There are also two special fields, which are printed only if we ask for them explicitly: 
+
+\begin{fieldlist}
+\fielditem{Annotation}{litteral} some annotation about the manuscript and its content. If you want to add paragraph inside it, you must use the \cs{par} command between each paragraph.
+
+\fielditem{catalog}{special} a list of catalogues which describe the manuscript. You must fill this field with arguments of a \cs{cites} command. For example:
+
+\begin{minted}{tex}
+@manuscript{key,
+  field1 = {value1},
+  field2 = {value2},
+  catalog = {[prenote1][postenote1]{key1}[prenote2][postenote2]{key2}}
+\end{minted}
+\end{fieldlist}
+
+
 \section{Use}
 \subsection{Loading}
 
