@@ -20,13 +20,14 @@
 
 % 1. Some commands to be redefine
 
-\newcommand{\cataloglabel}[1]{\textbf{#1}}
-\newcommand{\cataloglabelpunct}{\addcolon}
+\newcommand{\manuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
+\newcommand{\manuscriptdescriptionlabelpunct}{\addcolon}
 \newcommand{\pagetotalpagespunct}{\addcolon}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
 \newcommand{\collectionshelfmarkpunct}{\addspace}
 \newcommand{\locationlibrarypunct}{\addcolon}
 \newcommand{\datingpages}{\isdot\addcomma\addspace}
+\newcommand{\moreinterpunct}{\addsemicolon}
 \newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
 \newcommand{\mkcolumns}[1]{\addspace\mkbibparens{#1}}
 \newcommand{\mkshcite}[1]{#1}
@@ -38,20 +39,32 @@
 
 
 \newbibmacro{annotation}{%
-  \iftoggle{shorthand:details}{%
-    \iffieldundef{annotation}{}{\finentrypunct\setunit{}\par\unspace\printfield{annotation}}}{}%
+    \iffieldundef{annotation}{}{\par\unspace\printfield{annotation}}
 }
 
-\newbibmacro{annotation+catalog}{%
+\newbibmacro{manuscript:more}{%
+   \par%
+   \printlist{origin}%
+   \setunit{\moreinterpunct}%
+   \printnames{scribe}%
+   \setunit{\moreinterpunct}%
+   \printnames{owner}%
+   \finentrypunct
+}
+\newbibmacro{more+annotation+catalog}{%
+  \iftoggle{shorthand:details}{%
+    \finentrypunct\setunit{}%
+	\usebibmacro{manuscript:more}%
+	\setunit{}%
 	\usebibmacro{annotation}%
+	\setunit{}%
 	\usebibmacro{catalog}%
+  }{}%
 }
 
 \newbibmacro{catalog}{%
-	\iftoggle{shorthand:details}{%
-	  \iffieldundef{catalog}{}%
-	    {\finentrypunct\setunit{}\par\unspace\printfield{catalog}}}%
-	    {}%
+  \iffieldundef{catalog}{}%
+    {\par\unspace\printfield{catalog}}%
 }
 
 \newbibmacro{collection+shelfmark}{%
@@ -68,17 +81,12 @@
 }
 
 \newbibmacro{location+library+series+shelfmark}{%
-	\printlist[manuscripts:location]{location}%
+	\printlist{location}%
 	\setunit{\locationlibrarypunct}%
 	\printfield{library}%
 	\setunit{\librarycollectionpunct}%
 	\usebibmacro{collection+shelfmark}%
 }
-
-\DeclareListFormat{manuscripts:location}{%
-  \usebibmacro{list:delim}{\mklocation{#1}}%
-  \mklocation{#1}\isdot%
-  \usebibmacro{list:andothers}}
   
 \newbibmacro{manuscript:pages}{%
 	\printfield{pagetotal}%
@@ -95,12 +103,32 @@
 
 % 3. Some Field or List Format
 \DeclareFieldFormat{catalog}{%
-  \cataloglabel{%
-    \bibstring{catalog}%
-    \cataloglabelpunct}%
+    \bibstring[\manuscriptdescriptionlabel]{catalog}%
   #1%
 }
 \DeclareFieldFormat{support}{\bibstring{#1}}
+
+\DeclareNameFormat{manuscript}{%
+  \ifnumgreater{\value{listcount}}{\value{liststart}}%
+    {\multilistdelim}%
+    {\bibstring[\manuscriptdescriptionlabel]{\currentname}}%
+  \ifuseprefix
+    {\usebibmacro{name:first-last}{#1}{#4}{#5}{#8}}
+    {\usebibmacro{name:first-last}{#1}{#4}{#6}{#8}}%
+}
+\DeclareNameAlias{scribe}{manuscript}
+\DeclareNameAlias{owner}{manuscript}
+\DeclareListFormat[manuscript]{location}{%
+  \usebibmacro{list:delim}{\mklocation{#1}}%
+  \mklocation{#1}\isdot%
+  \usebibmacro{list:andothers}}
+
+\DeclareListFormat[manuscript]{origin}{%
+  \ifnumgreater{\value{listcount}}{\value{liststart}}%
+    {\multilistdelim}%
+    {\bibstring[\manuscriptdescriptionlabel]{origin}}%
+  #1%
+  }
 
 % 4. Printshorthands Environment
 
@@ -146,7 +174,7 @@
      \usebibmacro{related:init}%
      \usebibmacro{related}}
     {}%
-  \usebibmacro{annotation+catalog}%
+  \usebibmacro{more+annotation+catalog}%
   \usebibmacro{finentry}}
 
 %% 5.2 Citation command
