@@ -78,7 +78,6 @@ This bibtype can use the optional fields:
 
 \fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
 
-\fielditem{origin}{litteral} the place(s) where the manuscript was written.
 
 \fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
 
@@ -98,7 +97,8 @@ This bibtype can use the optional fields:
 There are also two special fields, which are printed only if we ask for them explicitly: 
 
 \begin{fieldlist}
-\fielditem{Annotation}{litteral} some annotation about the manuscript and its content. If you want to add paragraph inside it, you must use the \cs{par} command between each paragraph.
+\fielditem{annotation}{litteral} some annotation about the manuscript and its content. If you want to add paragraph inside it, you must use the \cs{par} command between each paragraph.
+
 
 \fielditem{catalog}{special} a list of catalogues which describe the manuscript. You must fill this field with arguments of a \cs{cites} command. For example:
 
@@ -108,8 +108,15 @@ There are also two special fields, which are printed only if we ask for them exp
   field2 = {value2},
   catalog = {[prenote1][postenote1]{key1}[prenote2][postenote2]{key2}}
 \end{minted}
-\end{fieldlist}
 
+
+\fielditem{origin}{list} the places where the manuscript was written.
+
+\fielditem{owner}{name} the name(s) of the owner(s) of the manuscript in the past.
+
+\fielditem{scribe}{list} the name(s) of the scribe(s).
+
+\end{fieldlist}
 
 \section{Use}
 \subsection{Loading}
