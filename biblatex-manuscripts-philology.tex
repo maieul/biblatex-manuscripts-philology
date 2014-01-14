@@ -128,3 +128,18 @@ When loading the \biblatex package, use the option \opt{bibstyle} with value equ
 \usepackage[bibstyle=manuscripts,…]{biblatex}
 \end{minted}
 \end{document}
+
+\subsection{Citation of one manuscript}
+
+The manuscript description is supposed to be used with a \opt{citestyle} of the \emph{verbose} family (see the \biblatex handbook).
+
+So, if you use 
+\begin{minted}{latex}
+\cite{manuscriptkey}
+\end{minted}
+
+the full reference of the manuscript will be printed (see the example file). However, you can use \cs{shcite} to print directly the shorthand of the manuscript :
+
+\begin{minted}{latex}
+\shcite{manuscriptkey}
+\end{minted}
