@@ -22,12 +22,13 @@
 
 \newcommand{\cataloglabel}[1]{\textbf{#1}}
 \newcommand{\cataloglabelpunct}{\addcolon}
-\newcommand{\pagetotalpunct}{\addslash}
-\newcommand{\datingpages}{\isdot\addcomma\addspace}
+\newcommand{\pagetotalpagespunct}{\addcolon}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
 \newcommand{\collectionshelfmarkpunct}{\addspace}
 \newcommand{\locationlibrarypunct}{\addcolon}
+\newcommand{\datingpages}{\isdot\addcomma\addspace}
 \newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
+\newcommand{\mkcolumns}[1]{\addspace\mkbibparens{#1}}
 \newcommand{\mkshcite}[1]{#1}
 
 \def\verso{v}
@@ -80,15 +81,16 @@
   \usebibmacro{list:andothers}}
   
 \newbibmacro{manuscript:pages}{%
+	\printfield{pagetotal}%
+	\iffieldundef{columns}{}{\bibstring[\mkcolumns]{\strfield{columns}column}}%
+	\setunit{\pagetotalpagespunct}%
 	\printfield{pages}%
-	\iffieldundef{pagetotal}{}%
-	  {\setunit{\pagetotalpunct}\printfield{pagetotal}}%
 } 
 
-\newbibmacro{support+columns}{%
+\newbibmacro{support+dating}{%
   \printfield{support}%
   \newunit%
-  \iffieldundef{columns}{}{\bibstring{\strfield{columns}column}}%
+  \usebibmacro{date/dating}%
   }
 
 % 3. Some Field or List Format
@@ -132,9 +134,7 @@
   \newunit\newblock
   \printfield{note}%
   \newunit\newblock
-  \usebibmacro{support+columns}
-  \newunit
-  \usebibmacro{date/dating}%
+  \usebibmacro{support+dating}
   \newunit\newblock
   \iftoggle{bbx:url}
     {\usebibmacro{url+urldate}}
