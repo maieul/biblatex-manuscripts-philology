@@ -74,9 +74,9 @@ This bibtype can use the optional fields:
 
 \begin{fieldlist}
 
-\fielditem{bookpagination}{key} the pagination of the manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \texttt{folio}. The value of this field is to be used for printing the \bibfield{pages} and \bibfield{pagetotal}.
+\fielditem{bookpagination}{key} the pagination of the manuscript which is studied. The standard pagination keys are allowed, but the package add a new key: \texttt{folio}. The value of this field is to be used for printing the \bibfield{pages} and \bibfield{pagetotal}.
 
-\fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed : \verb+1+ or \verb+2+.
+\fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed: \verb+1+ or \verb+2+.
 
 \fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
 
@@ -84,7 +84,7 @@ This bibtype can use the optional fields:
 
 \fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
 
-\fielditem{pagetotal}{integer} the total number of page in the manuscript.
+\fielditem{pagetotal}{integer} the total number of pages in the manuscript.
 
 
 \fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
@@ -93,7 +93,7 @@ This bibtype can use the optional fields:
 
 \fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand.
 
-\fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined : \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
+\fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
 
 \end{fieldlist}
 
@@ -104,7 +104,7 @@ There are also two special fields, which are printed only if we ask for them exp
 \fielditem{annotation}{litteral} some annotation about the manuscript and its content. If you want to add paragraph inside it, you must use the \cs{par} command between each paragraph.
 
 
-\fielditem{catalog}{special} a list of catalogues which describe the manuscript. You must fill this field with arguments of a \cs{cites} command. For example:
+\fielditem{catalog}{special} a list of catalogues which describes the manuscript. You must fill this field with arguments of a \cs{cites} command. For example:
 
 \begin{minted}{tex}
 @manuscript{key,
@@ -135,7 +135,7 @@ When loading the \biblatex package, use the option \opt{bibstyle} with value equ
 
 The manuscript description is supposed to be used with a \opt{citestyle} of the \emph{verbose} family (see the \biblatex handbook).
 
-So, if you use
+So, if you use:
 \begin{minted}{latex}
 \cite{manuscriptkey}
 \end{minted}
