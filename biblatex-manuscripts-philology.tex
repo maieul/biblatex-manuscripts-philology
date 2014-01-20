@@ -195,8 +195,16 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 \cs{pagetotalpagespunct} the punct between \bibfield{pagetotal} and \bibfield{pages}. By default \cs{addcolon}.
 \end{ltxsyntax}
 
-\subsection{Commands to use in the \field{pages} field}
+\subsection{Commands to use in the \bibfield{pages} field}
 
 In the pages field, you can use \cs{recto} and \cs{verso} command when you speak of folios. Default value are \cnt{r} and \cnt{v} but you can change them.
+
+\subsection{Localization strings}
+
+Some specific localization strings are defined in the \file{manucripts-xxx.lbx} files. Read the \biblatex handbook to know how to customize it.
+
+\subsection{Macros and field format}
+
+The \file{manuscripts.bbx} file defines bibmacro and field format (read the \biblatex handbook to know more about bibmacro and field format). We can't list all of them, but you can look on them to know how to customize more finely the manuscripts description.
 \end{document}
 
