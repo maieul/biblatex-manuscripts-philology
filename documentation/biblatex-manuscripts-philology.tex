@@ -22,7 +22,7 @@
 	revision={1.0.0},
 	date={20/01/2014},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
-	
+
 
 \begin{document}
 
@@ -61,7 +61,7 @@ This bibtype has these mandatory fields:
 
 \fielditem{collection}{literal} the collection in the library. For example: \verb+Supplément grec+.
 
-\fielditem{location}{literal} the city or place where the manuscript is kept. For example: \verb+Paris+ or \verb+Oxford+. 
+\fielditem{location}{literal} the city or place where the manuscript is kept. For example: \verb+Paris+ or \verb+Oxford+.
 
 \fielditem{library}{literal} the library where the manuscript is kept. For example: \verb+Bibliothèque Nationale de France+.
 
@@ -98,7 +98,7 @@ This bibtype can use the optional fields:
 \end{fieldlist}
 
 \subsection{Special}\label{fields:special}
-There are also two special fields, which are printed only if we ask for them explicitly: 
+There are also two special fields, which are printed only if we ask for them explicitly:
 
 \begin{fieldlist}
 \fielditem{annotation}{litteral} some annotation about the manuscript and its content. If you want to add paragraph inside it, you must use the \cs{par} command between each paragraph.
@@ -135,7 +135,7 @@ When loading the \biblatex package, use the option \opt{bibstyle} with value equ
 
 The manuscript description is supposed to be used with a \opt{citestyle} of the \emph{verbose} family (see the \biblatex handbook).
 
-So, if you use 
+So, if you use
 \begin{minted}{latex}
 \cite{manuscriptkey}
 \end{minted}
@@ -154,11 +154,11 @@ You can use the standard command \cs{printshorthands} with appropriate options:
 \printshorthands[type=manuscript,title=Conspectus siglorum]
 \end{minted}
 
-In the previous example, with use one option to print shorthands only for manuscripts entries, and we set the title to the classical one \enquote{Conspectus siglorum}. 
+In the previous example, with use one option to print shorthands only for manuscripts entries, and we set the title to the classical one \enquote{Conspectus siglorum}.
 
 \subsection{List of manuscripts with detailed fields}
 
-If you want to print a list of manuscripts with detailed fields listed in \secref{fields:special}, just use the \opt{env} option, with value equal to 
+If you want to print a list of manuscripts with detailed fields listed in \secref{fields:special}, just use the \opt{env} option, with value equal to
 \cnt{details}.
 
 \begin{minted}{latex}
@@ -169,7 +169,7 @@ If you want to print a list of manuscripts with detailed fields listed in \secre
 
 \subsection{Commands}
 
-You can redefine, with \cs{renewcommand} some commands defined in \file{manuscripts.bbx}. The commands starting with \cs{mk...} take one argument, the other take no argument. In these command, use the punctuation commands of \biblatex. 
+You can redefine, with \cs{renewcommand} some commands defined in \file{manuscripts.bbx}. The commands starting with \cs{mk...} take one argument, the other take no argument. In these command, use the punctuation commands of \biblatex.
 
 \begin{ltxsyntax}
 \csitem{collectionshelfmarkpunct} the punct between \bibfield{collection} and \bibfield{shelfmark}. By default \cs{addspace}.
@@ -217,4 +217,3 @@ The \file{manuscripts.bbx} file defines bibmacros and field formats (read the \b
 \end{release}
 \end{changelog}
 \end{document}
-
