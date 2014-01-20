@@ -20,20 +20,31 @@
 
 % 1. Some commands to be redefine
 
-\newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
-\newcommand{\manuscriptdescriptionlabelpunct}{\addcolon}
-\newcommand{\pagetotalpagespunct}{\addcolon}
-\newcommand{\librarycollectionpunct}{\addcomma\addspace}
+
+
+
+
+
+
 \newcommand{\collectionshelfmarkpunct}{\addspace}
-\newcommand{\locationlibrarypunct}{\addcolon}
-\newcommand{\datingpages}{\isdot\addcomma\addspace}
-\newcommand{\moreinterpunct}{\addsemicolon}
-\newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
+\newcommand{\datingpagespunct}{\isdot\addcomma\addspace}
+\newcommand{\librarycollectionpunct}{\addcomma\addspace}
+
+
 \newcommand{\mkcolumns}[1]{\addspace\mkbibparens{#1}}
+\newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
+\newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
 \newcommand{\mkshcite}[1]{#1}
 
-\def\verso{v}
+\newcommand{\locationlibrarypunct}{\addcolon}
+\newcommand{\manuscriptdescriptionlabelpunct}{\addcolon}
+\newcommand{\moreinterpunct}{\addsemicolon}
+\newcommand{\pagetotalpagespunct}{\addcolon}
+
 \def\recto{r}
+\def\verso{v}
+
+
 
 % 2. Some macros
 
@@ -167,7 +178,7 @@
   \iftoggle{bbx:url}
     {\usebibmacro{url+urldate}}
     {}%
-  \setunit{\datingpages}
+  \setunit{\datingpagespunct}
   \usebibmacro{manuscript:pages}
   \iftoggle{bbx:related}
     {\newunit\newblock%
