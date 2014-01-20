@@ -20,7 +20,7 @@
 
 % 1. Some commands to be redefine
 
-\newcommand{\manuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
+\newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
 \newcommand{\manuscriptdescriptionlabelpunct}{\addcolon}
 \newcommand{\pagetotalpagespunct}{\addcolon}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
@@ -103,7 +103,7 @@
 
 % 3. Some Field or List Format
 \DeclareFieldFormat{catalog}{%
-    \bibstring[\manuscriptdescriptionlabel]{catalog}%
+    \bibstring[\mkmanuscriptdescriptionlabel]{catalog}%
   #1%
 }
 \DeclareFieldFormat{support}{\bibstring{#1}}
