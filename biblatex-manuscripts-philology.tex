@@ -19,15 +19,15 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.0.0-beta},
-	date={25/11/2013},
+	revision={1.0.0},
+	date={20/01/2014},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 	
 
 \begin{document}
 
 \printtitlepage
-
+\tableofcontents
 \section{Introduction}
 \subsection{Goals}
 The \biblatex package defines some standard field for entry, and allows to use extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of extra fields needed to describe manuscripts in an introduction of a critical edition of classical texts is too great to use these field names without mistake.
@@ -206,5 +206,15 @@ Some specific localization strings are defined in the \file{manucripts-xxx.lbx} 
 \subsection{Macros and field formats}
 
 The \file{manuscripts.bbx} file defines bibmacros and field formats (read the \biblatex handbook to know more about bibmacro and field format). We can't list all of them, but you can look on them to know how to customize more finely the manuscripts description.
+
+\section{Change history}
+
+\begin{changelog}
+
+
+\begin{release}{1.1.0}{2014-01-20}
+\item First public release.
+\end{release}
+\end{changelog}
 \end{document}
 
