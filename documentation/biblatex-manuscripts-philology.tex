@@ -30,13 +30,13 @@
 \tableofcontents
 \section{Introduction}
 \subsection{Goals}
-The \biblatex package defines some standard field for entry, and allows to use extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of extra fields needed to describe manuscripts in an introduction of a critical edition of classical texts is too great to use these field names without mistake.
+The \biblatex package defines some standard fields for entry, and allows to use extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of extra fields needed to describe manuscripts in an introduction of a critical edition of classical texts is too great to use these fields' names without mistake.
 
 The aim of this package is double:
 
 \begin{itemize}
-\item Provides new datatype: \bibtype{manuscripts} with adapted field
-\item Provides new bibliography styles to print the list of manuscripts :
+\item Provides new datatype: \bibtype{manuscripts} with adapted fields.
+\item Provides new bibliography styles to print the list of manuscripts:
 \begin{itemize}
 	\item As a detailed list of witnesses of a text.
 	\item As a \emph{conspectus siglorum}.
@@ -77,7 +77,7 @@ This bibtype can use the optional fields:
 
 \fielditem{bookpagination}{key} the pagination of the manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \texttt{folio}. The value of this field is to be used for printing the \bibfield{pages} and \bibfield{pagetotal}.
 
-\fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed : \verb+1+ or \verb+2+.
+\fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed: \verb+1+ or \verb+2+.
 
 \fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
 
@@ -85,7 +85,7 @@ This bibtype can use the optional fields:
 
 \fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
 
-\fielditem{pagetotal}{integer} the total number of page in the manuscript.
+\fielditem{pagetotal}{integer} the total number of pages in the manuscript.
 
 
 \fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
