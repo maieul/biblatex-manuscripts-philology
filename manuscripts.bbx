@@ -50,32 +50,30 @@
 
 
 \newbibmacro{annotation}{%
-    \iffieldundef{annotation}{}{\par\unspace\printfield{annotation}}
+    \iffieldundef{annotation}{}{\printfield{annotation}}
 }
 
 \newbibmacro{manuscript:more}{%
-   \par%
-   \printlist{origin}%
-   \setunit{\moreinterpunct}%
-   \printnames{scribe}%
-   \setunit{\moreinterpunct}%
-   \printnames{owner}%
-   \finentrypunct
+    \printlist{origin}%
+    \setunit{\moreinterpunct}%
+    \printnames{scribe}%
+    \setunit{\moreinterpunct}%
+    \printnames{owner}%
 }
 \newbibmacro{more+annotation+catalog}{%
   \iftoggle{shorthand:details}{%
-    \finentrypunct\setunit{}%
+    \setunit{\finentrypunct\par}%
 	\usebibmacro{manuscript:more}%
-	\setunit{}%
+	\setunit{\finentrypunct\par}%
 	\usebibmacro{annotation}%
-	\setunit{}%
+	\setunit{\finentrypunct\par}%
 	\usebibmacro{catalog}%
   }{}%
 }
 
 \newbibmacro{catalog}{%
   \iffieldundef{catalog}{}%
-    {\par\unspace\printfield{catalog}}%
+    {\printfield{catalog}}%
 }
 
 \newbibmacro{collection+shelfmark}{%
