@@ -36,10 +36,10 @@
 \newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
 \newcommand{\mkshcite}[1]{#1}
 
-\newcommand{\locationlibrarypunct}{\addcolon}
-\newcommand{\manuscriptdescriptionlabelpunct}{\addcolon}
-\newcommand{\moreinterpunct}{\addsemicolon}
-\newcommand{\pagetotalpagespunct}{\addcolon}
+\newcommand{\locationlibrarypunct}{\addcolon\addspace}
+\newcommand{\manuscriptdescriptionlabelpunct}{\addcolon\addspace}
+\newcommand{\moreinterpunct}{\addsemicolon\addspace}
+\newcommand{\pagetotalpagespunct}{\addcolon\addspace}
 
 \def\recto{r}
 \def\verso{v}
@@ -50,32 +50,30 @@
 
 
 \newbibmacro{annotation}{%
-    \iffieldundef{annotation}{}{\par\unspace\printfield{annotation}}
+    \iffieldundef{annotation}{}{\printfield{annotation}}
 }
 
 \newbibmacro{manuscript:more}{%
-   \par%
-   \printlist{origin}%
-   \setunit{\moreinterpunct}%
-   \printnames{scribe}%
-   \setunit{\moreinterpunct}%
-   \printnames{owner}%
-   \finentrypunct
+    \printlist{origin}%
+    \setunit{\moreinterpunct}%
+    \printnames{scribe}%
+    \setunit{\moreinterpunct}%
+    \printnames{owner}%
 }
 \newbibmacro{more+annotation+catalog}{%
   \iftoggle{shorthand:details}{%
-    \finentrypunct\setunit{}%
+    \setunit{\finentrypunct\par}%
 	\usebibmacro{manuscript:more}%
-	\setunit{}%
+	\setunit{\finentrypunct\par}%
 	\usebibmacro{annotation}%
-	\setunit{}%
+	\setunit{\finentrypunct\par}%
 	\usebibmacro{catalog}%
   }{}%
 }
 
 \newbibmacro{catalog}{%
   \iffieldundef{catalog}{}%
-    {\par\unspace\printfield{catalog}}%
+    {\printfield{catalog}}%
 }
 
 \newbibmacro{collection+shelfmark}{%
@@ -122,7 +120,7 @@
 \DeclareNameFormat{manuscript}{%
   \ifnumgreater{\value{listcount}}{\value{liststart}}%
     {\multilistdelim}%
-    {\bibstring[\manuscriptdescriptionlabel]{\currentname}}%
+    {\bibstring[\mkmanuscriptdescriptionlabel]{\currentname}}%
   \ifuseprefix
     {\usebibmacro{name:first-last}{#1}{#4}{#5}{#8}}
     {\usebibmacro{name:first-last}{#1}{#4}{#6}{#8}}%
@@ -137,7 +135,7 @@
 \DeclareListFormat[manuscript]{origin}{%
   \ifnumgreater{\value{listcount}}{\value{liststart}}%
     {\multilistdelim}%
-    {\bibstring[\manuscriptdescriptionlabel]{origin}}%
+    {\bibstring[\mkmanuscriptdescriptionlabel]{origin}}%
   #1%
   }
 
@@ -218,5 +216,9 @@
 
 \NumCheckSetup{\def\verso{}\def\recto{}}
 
+%% 5.5 Language mapping
+
+\DeclareLanguageMapping{english}{english-manuscripts}
+\DeclareLanguageMapping{french}{french-manuscripts}
 
 \endinput

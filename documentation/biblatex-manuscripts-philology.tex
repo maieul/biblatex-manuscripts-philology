@@ -30,19 +30,20 @@
 \tableofcontents
 \section{Introduction}
 \subsection{Goals}
-The \biblatex package defines some standard field for entry, and allows to use extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of extra fields needed to describe manuscripts in an introduction of a critical edition of classical texts is too great to use these field names without mistake.
+The \biblatex package defines some standard fields for entry, and allows to use extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of extra fields needed to describe manuscripts in an introduction of a critical edition of classical texts is too great to use these fields' names without mistake.
 
 The aim of this package is double:
 
 \begin{itemize}
-\item Provides new datatype: \bibtype{manuscripts} with adapted field
-\item Provides new bibliography styles to print the list of manuscripts :
+\item Provides new datatype: \bibtype{manuscripts} with adapted fields.
+\item Provides new bibliography styles to print the list of manuscripts:
 \begin{itemize}
 	\item As a detailed list of witnesses of a text.
 	\item As a \emph{conspectus siglorum}.
 \end{itemize}
 \end{itemize}
 
+You can see minimal example in the file \href{file:example.pdf}{example.pdf}.
 \subsection{Credits}
 
 This package was created for Maïeul Rouquette's PHD\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licenced on the \emph{\LaTeX\ Project Public Licence}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}.
@@ -165,6 +166,8 @@ If you want to print a list of manuscripts with detailed fields listed in \secre
 \printshorthands[type=manuscript,env=details,title=Description of manuscripts]
 \end{minted}
 
+In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a three time \LaTeX.
+
 \section{Customization}
 
 \subsection{Commands}
@@ -186,13 +189,13 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 
 \csitem{mkshcite} the way the shorthand is printed when using \cs{shcite}. By default, no special formatting.
 
-\cs{locationlibrarypunct} the punct between \bibfield{location} and \bibfield{library}.  By default \cs{addcolon}.
+\cs{locationlibrarypunct} the punct between \bibfield{location} and \bibfield{library}.  By default \cs{addcolon}\cs{addspace}.
 
-\cs{manuscriptdescriptionlabelpunct} the punct between label and text, for the special fields. By default \cs{addcolon}.
+\cs{manuscriptdescriptionlabelpunct} the punct between label and text, for the special fields. By default \cs{addcolon}\cs{addspace}.
 
-\cs{moreinterpunct} the punct between each special fields when printing in the same paragraph.
+\cs{moreinterpunct} the punct between each special fields when printing in the same paragraph. By default \cs{addcolon}\cs{addspace}.
 
-\cs{pagetotalpagespunct} the punct between \bibfield{pagetotal} and \bibfield{pages}. By default \cs{addcolon}.
+\cs{pagetotalpagespunct} the punct between \bibfield{pagetotal} and \bibfield{pages}. By default \cs{addcolon}\cs{addspace}.
 \end{ltxsyntax}
 
 \subsection{Commands to use in the \bibfield{pages} field}
