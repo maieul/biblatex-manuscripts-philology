@@ -1,5 +1,7 @@
 \documentclass{article}
 \usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
 \setmainfont{Linux Libertine O}
 \usepackage[bibstyle=manuscripts,citestyle=verbose,datamodel=manuscripts]{biblatex}
 \bibliography{example}
@@ -8,5 +10,10 @@
 \author{Maïeul Rouquette}
 \maketitle
 \nocite{*}
-\printbibliography
+
+\printshorthands[type=manuscript,title=Manuscripts' description,env=details]
+\newpage
+\printshorthands[type=manuscript,title=Conspectus siglorum]
+
+
 \end{document}
