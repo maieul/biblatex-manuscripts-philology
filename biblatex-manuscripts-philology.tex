@@ -54,6 +54,7 @@ All issues can be submitted, in French or English, in the GitHub issues page\foo
 
 This package defines one new bibtype \bibtype{manuscript}, which is to be used to defined a manuscript.
 
+\subsection{Mandatory}
 This bibtype has these mandatory fields:
 
 \begin{fieldlist}
@@ -68,6 +69,7 @@ This bibtype has these mandatory fields:
 \fielditem{shelfmark}{literal} the shelfmark in the collection. For example: \verb+241+.
 \end{fieldlist}
 
+\subsection{Optional}
 This bibtype can use the optional fields:
 
 \begin{fieldlist}
@@ -95,6 +97,7 @@ This bibtype can use the optional fields:
 
 \end{fieldlist}
 
+\subsection{Special}\label{fields:special}
 There are also two special fields, which are printed only if we ask for them explicitly: 
 
 \begin{fieldlist}
@@ -143,5 +146,23 @@ the full reference of the manuscript will be printed (see the example file). How
 \shcite{manuscriptkey}
 \end{minted}
 
+\subsection{List of manuscripts: \emph{conspectus siglorum}}
+
+You can use the standard command \cs{printshorthands} with appropriate options:
+
+\begin{minted}{latex}
+\printshorthands[type=manuscript,title=Conspectus siglorum]
+\end{minted}
+
+In the previous example, with use one option to print shorthands only for manuscripts entries, and we set the title to the classical one \enquote{Conspectus siglorum}. 
+
+\subsection{List of manuscripts with detailed fields }
+
+If you want to print a list of manuscripts with detailed fields listed in \secref{fields:special}, just use the \opt{env} option, with value equal to 
+\cnt{details}.
+
+\begin{minted}{latex}
+\printshorthands[type=manuscript,end=details,title=Description of manuscripts]
+\end{minted}
 \end{document}
 
