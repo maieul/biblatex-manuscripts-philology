@@ -9,10 +9,9 @@ This work contains:
   - manuscripts.dbx
   - french-manuscripts.lbx
   - english-manuscripts.lbx
-- The documentation files:
+- The documentation folde:
   - biblatex-manuscripts-philology.tex
   - the derivated file: biblatex-manuscripts-philology.pdf
-- The example files:
   - example/example.tex
   - example/example.bib
   - the derivated file example/example.pdf

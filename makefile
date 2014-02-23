@@ -1,14 +1,14 @@
-FILES = *.bbx *.dbx *.lbx documentation   makefile
+FILES = *.bbx *.dbx *.lbx documentation   makefile README
 
 
 dist: all
-	rm -rf biblatex-manuscript-philology
-	mkdir biblatex-manuscript-philology
-	cp *bbx *dbx *lbx *makefile biblatex-manuscript-philology
-	mkdir biblatex-manuscript-philology/documentation
-	cp documentation/*tex documentation/*bib documentation/*pdf documentation/makefile  biblatex-manuscript-philology/documentation
-	$(RM) ../biblatex-manuscript-philology.zip
-	zip -r ../biblatex-manuscript-philology.zip biblatex-manuscript-philology
+	rm -rf biblatex-manuscripts-philology
+	mkdir biblatex-manuscripts-philology
+	cp README *bbx *dbx *lbx *makefile biblatex-manuscripts-philology
+	mkdir biblatex-manuscripts-philology/documentation
+	cp documentation/*tex documentation/*bib documentation/*pdf documentation/makefile  biblatex-manuscripts-philology/documentation
+	$(RM) ../biblatex-manuscripts-philology.zip
+	zip -r ../biblatex-manuscripts-philology.zip biblatex-manuscripts-philology
 
 
 clean:
