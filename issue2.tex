@@ -1,0 +1,22 @@
+\documentclass{article}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{english}
+\setmainfont{Linux Libertine O}
+\usepackage[backend=biber,bibstyle=manuscripts,citestyle=verbose,datamodel=manuscripts]{biblatex}
+\addbibresource{issue2.bib}
+\begin{document}
+\title{Examples}
+\author{Maïeul Rouquette}
+\maketitle
+\nocite{*}
+
+\cite{L}
+
+\cite{L}
+\printshorthands[type=manuscript,title=Manuscripts' description,env=details]
+\newpage
+\printshorthands[type=manuscript,title=Conspectus siglorum]
+
+
+\end{document}
