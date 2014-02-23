@@ -3,14 +3,23 @@
 \usepackage{polyglossia}
 \setmainlanguage{english}
 \setmainfont{Linux Libertine O}
-\usepackage[backend=biber,bibstyle=manuscripts,citestyle=verbose,datamodel=manuscripts]{biblatex}
+\usepackage[backend=biber,bibstyle=manuscripts,citestyle=verbose,msnoauthoshorthand]{biblatex}
+
+\DeclareFieldAlias{shorthand}{entrykey}
 \addbibresource{issue2.bib}
+
+\newbibmacro*{cite:short}{%
+  \printnames{labelname}%
+  \setunit*{\nametitledelim}%
+  \printtext[bibhyperlink]{%
+    \printfield[citetitle]{labeltitle}}}
+    
+
 \begin{document}
 \title{Examples}
 \author{Maïeul Rouquette}
-\maketitle
-\nocite{*}
 
+\notbool{bbx:msnoauthoshorthand}{a}{c}
 \cite{L}
 
 \cite{L}
