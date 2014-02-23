@@ -19,8 +19,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.0.0},
-	date={20/01/2014},
+	revision={1.1.0},
+	date={23/02/2014},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -81,7 +81,11 @@ This bibtype can use the optional fields:
 
 \fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
 
+\fielditem{shortcollection}{litteral} the abreviated form of the collection. Not used by the default style.
+
+
 \fielditem{shortlibrary}{litteral} the abreviated form of the library. Not used by the default style.
+
 
 \fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
 
@@ -214,8 +218,11 @@ The \file{manuscripts.bbx} file defines bibmacros and field formats (read the \b
 
 \begin{changelog}
 
+\begin{release}{1.1.0}{2014-02-23}
+\item Added \bibfield{shortcollection} field.
+\end{release}
 
-\begin{release}{1.1.0}{2014-01-20}
+\begin{release}{1.0.0}{2014-01-20}
 \item First public release.
 \end{release}
 \end{changelog}
