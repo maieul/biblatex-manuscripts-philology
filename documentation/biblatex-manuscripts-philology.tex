@@ -95,7 +95,7 @@ This bibtype can use the optional fields:
 \fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
 
 
-\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the option \opt{msnoauthoshorthand} is loaded. See \secref{opt:msnoauthoshorthand}.
+\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the option \opt{msnoautoshorthand} is loaded. See \secref{opt:msnoautoshorthand}.
 
 \fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
 
@@ -142,7 +142,7 @@ Loading \biblatex, you can use all the standard \biblatex options. But you can a
 
 \begin{optionlist}
 
-\boolitem[false]{msnoauthoshorthand}\label{opt:msnoauthoshorthand}
+\boolitem[false]{msnoautoshorthand}\label{opt:msnoautoshorthand}
 
 Disable the auto definition of manuscript's shorthand by using the citation key.
 \end{optionlist}
@@ -230,7 +230,7 @@ The \file{manuscripts.bbx} file defines bibmacros and field formats (read the \b
 
 \begin{release}{1.1.0}{2014-02-23}
 \item Add \bibfield{shortcollection} field.\see{field:shortcollection}
-\item Add \opt{msnoauthoshorthand} option. \see{opt:msnoauthoshorthand}
+\item Add \opt{msnoautoshorthand} option. \see{opt:msnoautoshorthand}
 \end{release}
 
 \begin{release}{1.0.0}{2014-01-20}

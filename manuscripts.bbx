@@ -219,13 +219,13 @@
 
 % 5.6 Auto shorthand
 
-\newbool{bbx:msnoauthoshorthand}
-\DeclareBibliographyOption{msnoauthoshorthand}[true]{%
-	\csuse{bool#1}{bbx:msnoauthoshorthand}%
+\newbool{bbx:msnoautoshorthand}
+\DeclareBibliographyOption{msnoautoshorthand}[true]{%
+	\csuse{bool#1}{bbx:msnoautoshorthand}%
 }
 
 \AtEveryCitekey{%
-	\notbool{bbx:msnoauthoshorthand}{%
+	\notbool{bbx:msnoautoshorthand}{%
 		\ifentrytype{manuscript}{%
 			\iffieldundef{shorthand}{%
 				\savefield{entrykey}{\entrykey}%
