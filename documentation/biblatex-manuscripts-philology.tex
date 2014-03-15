@@ -20,7 +20,7 @@
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
 	revision={1.1.0},
-	date={23/02/2014},
+	date={15/03/2014},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -81,7 +81,7 @@ This bibtype can use the optional fields:
 
 \fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
 
-\fielditem{shortcollection}{litteral} the abreviated form of the collection. Not used by the default style.
+\fielditem{shortcollection}{litteral} the abreviated form of the collection. Not used by the default style.\label{field:shortcollection}
 
 
 \fielditem{shortlibrary}{litteral} the abreviated form of the library. Not used by the default style.
@@ -95,7 +95,7 @@ This bibtype can use the optional fields:
 \fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
 
 
-\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand.
+\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the option \opt{msnoautoshorthand} is loaded. See \secref{opt:msnoautoshorthand}.
 
 \fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
 
@@ -132,9 +132,20 @@ There are also two special fields, which are printed only if we ask for them exp
 When loading the \biblatex package, use the option \opt{bibstyle} with value equal to \opt{manuscripts}.
 
 \begin{minted}{latex}
-\usepackage[bibstyle=manuscripts,…]{biblatex}
+\usepackage[bibstyle=manuscripts,otheroption…]{biblatex}
 \end{minted}
 
+\subsubsection{Options}
+
+
+Loading \biblatex, you can use all the standard \biblatex options. But you can also use these specific options:
+
+\begin{optionlist}
+
+\boolitem[false]{msnoautoshorthand}\label{opt:msnoautoshorthand}
+
+Disable the auto definition of manuscript's shorthand by using the citation key.
+\end{optionlist}
 \subsection{Citation of one manuscript}
 
 The manuscript description is supposed to be used with a \opt{citestyle} of the \emph{verbose} family (see the \biblatex handbook).
@@ -166,11 +177,27 @@ If you want to print a list of manuscripts with detailed fields listed in \secre
 \cnt{details}.
 
 \begin{minted}{latex}
-\printshorthands[type=manuscript,env=details,title=Description of manuscripts]
+\printbibliography[type=manuscript,env=details,title=Description of manuscripts]
 \end{minted}
 
 In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a three time \LaTeX.
 
+If you use \opt{msnoautoshorthand} option, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
+
+\label{bibcheck}An other solution is to make two lists: one with manuscripts with shorthand and one with manuscript withoutshortands. You can add to your \cmd{printbiblography} commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}:
+\begin{minted}{latex}
+\printbibliography[
+	type=manuscript,
+	env=details,
+	title=Description of used manuscripts,
+	check=withshorthand
+	]
+\printbibliography[
+	type=manuscript,
+	title=Description of other manuscripts,
+	check=withoutshorthand
+	]
+\end{minted}
 \section{Customization}
 
 \subsection{Commands}
@@ -217,8 +244,10 @@ The \file{manuscripts.bbx} file defines bibmacros and field formats (read the \b
 
 \begin{changelog}
 
-\begin{release}{1.1.0}{2014-02-23}
-\item Added \bibfield{shortcollection} field.
+\begin{release}{1.1.0}{2014-03-15}
+\item Add \bibfield{shortcollection} field.\see{field:shortcollection}
+\item Add \opt{msnoautoshorthand} option. \see{opt:msnoautoshorthand}
+\item Add \opt{withshorthand} and \opt{withoutshorthand} bibcheck. \see{bibcheck}
 \end{release}
 
 \begin{release}{1.0.0}{2014-01-20}

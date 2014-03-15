@@ -49,6 +49,9 @@
 % 2. Some macros
 
 
+\newbibmacro{annotation}{%
+    \iffieldundef{annotation}{}{\printfield{annotation}}
+}
 
 \newbibmacro{manuscript:more}{%
     \printlist{origin}%
@@ -152,7 +155,7 @@
       \setlength{\parsep}{\bibparsep}%
       \renewcommand*{\makelabel}[1]{##1\hss}}}
   {\endlist}
-  {\item}
+  {\item\iffieldundef{shorthand}{\hspace{-\labelwidth}\hspace{-\labelsep}}}
  
 % 5. Others
 %% 5.1 Driver
@@ -192,13 +195,9 @@
   {\usebibmacro{cite:postnote}}
 
 %% 5.3 Mapping
- \DeclareStyleSourcemap{
+
+\DeclareStyleSourcemap{
 	\maps[datatype=bibtex]{
-		\map{
-			\pertype{manuscript}
-			\step[fieldsource=entrykey]
-			\step[fieldset=shorthand, origfieldval]
-      }
         \map[overwrite]{
         	\pertype{manuscript}
 			\step[fieldsource=catalog,final]
@@ -218,4 +217,27 @@
 \DeclareLanguageMapping{english}{english-manuscripts}
 \DeclareLanguageMapping{french}{french-manuscripts}
 
+% 5.6 Auto shorthand
+
+\newbool{bbx:msnoautoshorthand}
+\DeclareBibliographyOption{msnoautoshorthand}[true]{%
+	\csuse{bool#1}{bbx:msnoautoshorthand}%
+}
+
+\AtEveryCitekey{%
+	\notbool{bbx:msnoautoshorthand}{%
+		\ifentrytype{manuscript}{%
+			\iffieldundef{shorthand}{%
+				\savefield{entrykey}{\entrykey}%
+				\restorefield{shorthand}{\entrykey}%
+				}{}%
+			}{}%
+		}%
+	{}%
+}
+
+% 5.7 bibcheck
+
+\defbibcheck{withshorthand}{\iffieldundef{shorthand}{\skipentry}{}}
+\defbibcheck{withoutshorthand}{\iffieldundef{shorthand}{}{\skipentry}}
 \endinput
