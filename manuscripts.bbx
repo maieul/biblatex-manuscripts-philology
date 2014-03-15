@@ -152,7 +152,7 @@
       \setlength{\parsep}{\bibparsep}%
       \renewcommand*{\makelabel}[1]{##1\hss}}}
   {\endlist}
-  {\item}
+  {\item\iffieldundef{shorthand}{\hspace{-\labelwidth}\hspace{-\labelsep}}}
  
 % 5. Others
 %% 5.1 Driver

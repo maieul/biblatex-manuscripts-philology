@@ -5,14 +5,9 @@
 \setmainfont{Linux Libertine O}
 \usepackage[backend=biber,bibstyle=manuscripts,citestyle=verbose,msnoautoshorthand]{biblatex}
 
-\DeclareFieldAlias{shorthand}{entrykey}
 \addbibresource{issue2.bib}
 
-\newbibmacro*{cite:short}{%
-  \printnames{labelname}%
-  \setunit*{\nametitledelim}%
-  \printtext[bibhyperlink]{%
-    \printfield[citetitle]{labeltitle}}}
+
     
 
 \begin{document}
@@ -21,7 +16,10 @@
 
 \cite{L}
 
-\cite{L}
+\cite{O}
+
+\printbibliography[title=Conspectus siglorum,env=details]
 
 
+\printbibliography[title=Conspectus siglorum]
 \end{document}
