@@ -49,6 +49,9 @@
 % 2. Some macros
 
 
+\newbibmacro{annotation}{%
+    \iffieldundef{annotation}{}{\printfield{annotation}}
+}
 
 \newbibmacro{manuscript:more}{%
     \printlist{origin}%
@@ -232,4 +235,9 @@
 		}%
 	{}%
 }
+
+% 5.7 bibcheck
+
+\defbibcheck{withshorthand}{\iffieldundef{shorthand}{\skipentry}{}}
+\defbibcheck{withoutshorthand}{\iffieldundef{shorthand}{}{\skipentry}}
 \endinput
