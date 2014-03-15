@@ -182,6 +182,22 @@ If you want to print a list of manuscripts with detailed fields listed in \secre
 
 In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a three time \LaTeX.
 
+If you use \opt{msnoautoshorthand} option, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
+
+An other solution is to make two lists: one with manuscripts with shorthand and one with manuscript withoutshortands. You can add to your \cmd{printbiblography} commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}:
+\begin{minted}{latex}
+\printbibliography[
+	type=manuscript,
+	env=details,
+	title=Description of used manuscripts,
+	check=withshorthand
+	]
+\printbibliography[
+	type=manuscript,
+	title=Description of other manuscripts,
+	check=withoutshorthand
+	]
+\end{minted}
 \section{Customization}
 
 \subsection{Commands}
