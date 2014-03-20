@@ -12,26 +12,24 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
-\ProvidesFile{manuscripts.bbx}
+\ProvidesFile{manuscripts-noautoshorthand.bbx}
 [\abx@bbxid]
 
 
 \RequireBibliographyStyle{manuscripts-shared}
 
 % Mapping
+% Mapping
  \DeclareStyleSourcemap{
 	\maps[datatype=bibtex]{
-		\map{
-			\pertype{manuscript}
-				\step[fieldsource=entrykey]
-				\step[fieldset=shorthand, origfieldval]
-      			}
         		\map[overwrite]{
-        			\pertype{manuscript}
+        				\pertype{manuscript}
 				\step[fieldsource=catalog,final]
 		 		\step[fieldset=catalog,fieldvalue={\cites}]
 				\step[origfieldval,fieldset=catalog,append]
-       	 		}
+        		}
   	}
 }
+\endinput
+
 \endinput
