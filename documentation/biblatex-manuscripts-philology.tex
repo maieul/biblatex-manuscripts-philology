@@ -181,16 +181,16 @@ If you use \opt{manuscripts-noautoshorthand} version, this list could contain ma
 \label{bibcheck}An other solution is to make two lists: one with manuscripts with shorthand and one with manuscript withoutshortands. You can add to your \cmd{printbiblography} commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}:
 \begin{minted}{latex}
 \printbibliography[
-	type=manuscript,
-	env=details,
-	title=Description of used manuscripts,
-	check=withshorthand
-	]
+  type=manuscript,
+  env=details,
+  title=Description of used manuscripts,
+  check=withshorthand
+]
 \printbibliography[
-	type=manuscript,
-	title=Description of other manuscripts,
-	check=withoutshorthand
-	]
+  type=manuscript,
+  title=Description of other manuscripts,
+  check=withoutshorthand
+]
 \end{minted}
 \section{Customization}
 
