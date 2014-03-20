@@ -95,7 +95,7 @@ This bibtype can use the optional fields:
 \fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
 
 
-\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the option \opt{msnoauthoshorthand} is loaded. See \secref{opt:msnoauthoshorthand}.
+\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand.
 
 \fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
 
@@ -132,20 +132,9 @@ There are also two special fields, which are printed only if we ask for them exp
 When loading the \biblatex package, use the option \opt{bibstyle} with value equal to \opt{manuscripts}.
 
 \begin{minted}{latex}
-\usepackage[bibstyle=manuscripts,otheroption…]{biblatex}
+\usepackage[bibstyle=manuscripts,…]{biblatex}
 \end{minted}
 
-\subsubsection{Options}
-
-
-Loading \biblatex, you can use all the standard \biblatex options. But you can also use these specific options:
-
-\begin{optionlist}
-
-\boolitem[false]{msnoauthoshorthand}\label{opt:msnoauthoshorthand}
-
-Disable the auto definition of manuscript's shorthand by using the citation key.
-\end{optionlist}
 \subsection{Citation of one manuscript}
 
 The manuscript description is supposed to be used with a \opt{citestyle} of the \emph{verbose} family (see the \biblatex handbook).
