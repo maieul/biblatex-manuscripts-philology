@@ -32,6 +32,7 @@
 
 
 \newcommand{\mkcolumns}[1]{\addspace\mkbibparens{#1}}
+\newcommand{\mklayer}[1]{\addspace\mkbibparens{#1}}
 \newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
 \newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
 \newcommand{\mkshcite}[1]{#1}
@@ -102,6 +103,7 @@
 	\iffieldundef{columns}{}{\bibstring[\mkcolumns]{\strfield{columns}column}}%
 	\setunit{\pagetotalpagespunct}%
 	\printfield{pages}%
+	\iffieldundef{layer}{}{\bibstring[\mklayer]{\strfield{layer}layer}}%
 } 
 
 \newbibmacro{support+dating}{%

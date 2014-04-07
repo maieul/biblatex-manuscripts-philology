@@ -15,7 +15,7 @@
 \ProvidesFile{manuscripts-shared.dbx}
 [\abx@bbxid]
 \DeclareDatamodelEntrytypes{manuscript}
-\DeclareDatamodelFields[type=field,datatype=literal]{catalog,dating,shortlibrary,columns, collection,shortcollection,usualtitle,shelfmark,support,columns}
+\DeclareDatamodelFields[type=field,datatype=literal]{catalog,dating,shortlibrary,columns, collection,shortcollection,usualtitle,shelfmark,support,columns,layer}
 \DeclareDatamodelFields[type=list,datatype=name]{scribe,owner}
 \DeclareDatamodelFields[type=list,datatype=literal]{origin}
 \DeclareDatamodelEntryfields[manuscript]{catalog,dating,shortlibrary,shortcollection,columns,languages, collection,usualtitle,shelfmark,support,columns,origin,scribe,owner}
