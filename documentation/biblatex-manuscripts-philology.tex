@@ -19,8 +19,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.1.1},
-	date={20/03/2014},
+	revision={1.2.0},
+	date={07/04/2014},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -81,6 +81,12 @@ This bibtype can use the optional fields:
 
 \fielditem{dating}{litteral} the dating of the manuscript. It can be for example a century.
 
+\fielditem{layer}{key} for palimpsests, the layer which is studied. There is two possibility: 
+	\begin{description}
+		\item[inf] for the inferior layer.
+		\item[sup] for the superior layer 
+	\end{description}
+
 \fielditem{shortcollection}{litteral} the abreviated form of the collection. Not used by the default style.\label{field:shortcollection}
 
 
@@ -89,7 +95,7 @@ This bibtype can use the optional fields:
 
 \fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
 
-\fielditem{pagetotal}{integer} the total number of pages in the manuscript.
+\fielditem{pagetotal}{integer} the number of pages in the manuscript.
 
 
 \fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
@@ -237,6 +243,11 @@ The \file{manuscripts-shared.bbx} file defines bibmacros and field formats (read
 \section{Change history}
 
 \begin{changelog}
+
+
+\begin{release}{1.2.0}{2014-04-07}
+	\item Add \bibfield{layer}.\see{field:layer}
+\end{release}
 
 \begin{release}{1.1.1}{2014-03-20}
 	\item Delete \opt{msnoautoshorthand} option and replace it by the \opt{manuscripts-noautoshorthand} style. \see{noautoshorthand}
