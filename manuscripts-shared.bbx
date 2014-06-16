@@ -80,7 +80,7 @@
 \newbibmacro{collection+shelfmark}{%
 	\mkbibemph{%
 	  \printfield{collection}%
-	  \setunit{\collectionshelfmarkpunct}%
+	  \iffieldundef{collection}{}{\setunit{\collectionshelfmarkpunct}}%
 	  \printfield{shelfmark}%
 	}%
 }
