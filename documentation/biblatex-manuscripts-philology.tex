@@ -101,7 +101,7 @@ This bibtype can use the optional fields:
 \fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
 
 
-\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the version \opt{manuscript-noauthoshorthand} is loaded. See \secref{noauthoshorthand}.
+\fielditem{shorthand}{litteral} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the version \opt{manuscript-noautoshorthand} is loaded. See \secref{noautoshorthand}.
 
 \fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
 
@@ -184,7 +184,7 @@ In this case, you must run two times biber: one after the first run of \LaTeX\ a
 
 If you use \opt{manuscripts-noautoshorthand} version, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
 
-\label{bibcheck}An other solution is to make two lists: one with manuscripts with shorthand and one with manuscript withoutshortands. You can add to your \cmd{printbiblography} commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}:
+\label{bibcheck}An other solution is to make two lists: one with manuscripts with shorthand and one with manuscript withoutshortands. You can add to your \cmd{printbiblography} or \cmd{printshorthands}  commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}. As you:
 \begin{minted}{latex}
 \printbibliography[
   type=manuscript,
