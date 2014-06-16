@@ -19,8 +19,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.2.0},
-	date={07/04/2014},
+	revision={1.3.0},
+	date={16/06/2014},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -198,6 +198,23 @@ If you use \opt{manuscripts-noautoshorthand} version, this list could contain ma
   check=withoutshorthand
 ]
 \end{minted}
+
+\subsection{Sorting list of manuscripts without shorthand}
+
+\label{sorting} If you doesn't use the shorthands' feature, you can want to print a list of manuscripts, sorted by Town, Library, Collection, Shelfmark.
+
+You can use, for that, the option \opt{sorting=manuscripts}. 
+
+\begin{minted}{latex}
+\printbibliography[
+  type=manuscript,
+  title=Description of other manuscripts,
+  sorting=manuscripts
+]
+\end{minted}
+
+You can use the special field \bibfield{sortshelfmark} if the way you shelf marks are sorted is not the way they are printed (like in normal entry type, you can use \bibfield{sorttitle}.
+
 \section{Customization}
 
 \subsection{Commands}
@@ -244,6 +261,9 @@ The \file{manuscripts-shared.bbx} file defines bibmacros and field formats (read
 
 \begin{changelog}
 
+\begin{release}{1.2.0}{2014-04-07}
+	\item Add sorting description.\see{sorting}
+\end{release}
 
 \begin{release}{1.2.0}{2014-04-07}
 	\item Add \bibfield{layer}.\see{field:layer}
