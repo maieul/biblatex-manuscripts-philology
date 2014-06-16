@@ -90,7 +90,7 @@
 	  {\printfield{dating}}%
 }
 
-\newbibmacro{location+library+series+shelfmark}{%
+\newbibmacro{location+library+collection+shelfmark}{%
 	\printlist{location}%
 	\setunit{\locationlibrarypunct}%
 	\printfield{library}%
@@ -164,7 +164,7 @@
 \DeclareBibliographyDriver{manuscript}{%
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
-  \usebibmacro{location+library+series+shelfmark}%
+  \usebibmacro{location+library+collection+shelfmark}%
   \newunit
   \printlist{language}%
   \newunit\newblock
