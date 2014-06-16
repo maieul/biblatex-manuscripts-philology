@@ -211,4 +211,32 @@
 
 \defbibcheck{withshorthand}{\iffieldundef{shorthand}{\skipentry}{}}
 \defbibcheck{withoutshorthand}{\iffieldundef{shorthand}{}{\skipentry}}
+
+
+%% 5.6 Sorting
+\DeclareSortingScheme{manuscripts}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+  	\field{location}
+	\literal{0000}
+  }
+  \sort{
+    \field{library}
+    \literal{0000}
+  }
+  \sort{
+    \field{collection}
+    \field{0000}
+  }
+  \sort{
+  	\field{sortshelfmark}
+    \field{shelfmark}
+  }
+}
+
 \endinput
