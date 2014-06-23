@@ -16,8 +16,9 @@
 \ProvidesFile{manuscripts-commons}
 [\abx@bbxid]
 
-
-\RequireBibliographyStyle{verbose}
+\ifdef{\biblatexmultipledm@bibstyle}
+	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
+	{\RequireBibliographyStyle{verbose}}
 
 % This file contains code shared by manuscript.bbx and manuscript-noauthoshorthand.
 % This file is organized from the must close of user to the less close.
