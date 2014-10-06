@@ -186,7 +186,26 @@
      \usebibmacro{related}}
     {}%
   \usebibmacro{more+annotation+catalog}%
-  \usebibmacro{finentry}}
+  \usebibmacro{finentry}
+  }
+
+\DeclareBibliographyDriver{cite:manuscript}{%For biblatex-chicago styles
+  \usebibmacro{bibindex}%
+  \usebibmacro{location+library+collection+shelfmark}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \printfield{howpublished}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{support+dating}
+  \newunit\newblock
+  \setunit{\datingpagespunct}
+  \usebibmacro{manuscript:pages}
+  \usebibmacro{more+annotation+catalog}%
+  \usebibmacro{finentry}
+}
 
 %% 5.2 Citation command
 \DeclareCiteCommand{\shcite}[\mkshcite]
