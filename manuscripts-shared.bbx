@@ -43,6 +43,7 @@
 \newcommand{\moreinterpunct}{\addsemicolon\addspace}
 \newcommand{\pagetotalpagespunct}{\addcolon\addspace}
 
+
 \def\recto{r}
 \def\verso{v}
 
@@ -79,7 +80,7 @@
 }
 
 \newbibmacro{collection+shelfmark}{%
-	\mkbibemph{%
+  \printtext[collection+shelfmark]{%
 	  \printfield{collection}%
 	  \iffieldundef{collection}{}{\setunit{\collectionshelfmarkpunct}}%
 	  \printfield{shelfmark}%
@@ -117,6 +118,9 @@
 \DeclareFieldFormat{catalog}{%
     \bibstring[\mkmanuscriptdescriptionlabel]{catalog}%
   #1%
+}
+\DeclareFieldFormat{collection+shelfmark}{%
+  \printtext[title]{#1}%
 }
 \DeclareFieldFormat{support}{\bibstring{#1}}
 
