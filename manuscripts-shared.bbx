@@ -265,7 +265,7 @@
 % 6. Prevent trouble with abbreviated forme (verbose family)
 
 \RequirePackage{xpatch}
-\newbibmacro{manuscript:add:shortened}{\ifentrytype{manuscript}{\usebibmacro{location+library+collection+shelfmark}\newunit}{}}
+\newbibmacro{manuscript:add:shortened}{\ifentrytype{manuscript}{\usebibmacro{location+library+collection+shelfmark}}{}}
 \newcommand{\manuscriptaddshortened}[1]{%
 	\def\do##1{%
 		  \xpretobibmacro{##1}{\usebibmacro{manuscript:add:shortened}}{}{}%
