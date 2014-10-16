@@ -262,4 +262,17 @@
   }
 }
 
+% 6. Prevent trouble with abbreviated forme (verbose family)
+
+\RequirePackage{xpatch}
+\newbibmacro{manuscript:add:shortened}{\ifentrytype{manuscript}{\usebibmacro{location+library+collection+shelfmark}\newunit}{}}
+\newcommand{\manuscriptaddshortened}[1]{%
+	\def\do##1{%
+		  \xpretobibmacro{##1}{\usebibmacro{manuscript:add:shortened}}{}{}%
+		  }%
+	\docsvlist{#1}%
+}
+\AtBeginDocument{%
+	\manuscriptaddshortened{cite:title,cite:short,cite:opcit}%
+}
 \endinput
