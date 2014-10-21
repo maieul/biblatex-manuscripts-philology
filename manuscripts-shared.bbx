@@ -28,7 +28,7 @@
 
 
 \newcommand{\collectionshelfmarkpunct}{\addspace}
-\newcommand{\datingpagespunct}{\isdot\addcomma\addspace}
+\newcommand{\datingpagespunct}{\addcomma\addspace}
 \newcommand{\librarycollectionpunct}{\addcomma\addspace}
 
 
@@ -122,6 +122,8 @@
 \DeclareFieldFormat{collection+shelfmark}{%
   \printtext[title]{#1}%
 }
+\DeclareFieldFormat{dating}{#1\isdot}
+
 \DeclareFieldFormat{support}{\bibstring{#1}}
 
 \DeclareNameFormat{manuscript}{%

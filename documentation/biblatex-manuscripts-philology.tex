@@ -19,8 +19,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.6.0},
-	date={16/10/2014},
+	revision={1.6.1},
+	date={21/10/2014},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -224,7 +224,7 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 \begin{ltxsyntax}
 \csitem{collectionshelfmarkpunct} the punct between \bibfield{collection} and \bibfield{shelfmark}. By default \cs{addspace}.
 
-\csitem{datingpagespunct} the punct between \bibfield{dating} and \bibfield{pages}. By default \cs{isdot}\cs{addcomma}\cs{addspace}.
+\csitem{datingpagespunct} the punct between \bibfield{dating} and \bibfield{pages}. By default \cs{addcomma}\cs{addspace}. The \cs{isdot} is automatically called when printing \bibfield{dating} field. Consequently, \cs{isdot} is deleted from \cs{datingpagespunct}.
 
 \csitem{librarycollectionpunct} the punct between \bibfield{library} and \bibfield{collection}. By default \cs{addcomma}\cs{addspace}.
 
@@ -265,6 +265,10 @@ To use this package with the features of \verb+biblatex-realauthor+, you must us
 \section{Change history}
 
 \begin{changelog}
+
+\begin{release}{1.6.1}{2014-10-21}	
+  	\item Add \cs{isdot} after each printing of the \bibfield{dating} field, to allow to use abbreviations with a dot (like \enquote{c.}) without adding a uppercase after.
+\end{release}
 
 \begin{release}{1.6.0}{2014-10-16}	
   	\item Patching some bibmacros to prevent lost of manuscript descriptions when using  op. cit abreviation.
