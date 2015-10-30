@@ -58,9 +58,9 @@
 
 \newbibmacro{manuscript:more}{%
     \printlist{origin}%
-    \setunit{\moreinterpunct}%
+    \setunit*{\moreinterpunct}%
     \printnames{scribe}%
-    \setunit{\moreinterpunct}%
+    \setunit*{\moreinterpunct}%
     \printnames{owner}%
 }
 \newbibmacro{more+annotation+catalog}{%
@@ -82,7 +82,7 @@
 \newbibmacro{collection+shelfmark}{%
   \printtext[collection+shelfmark]{%
 	  \printfield{collection}%
-	  \iffieldundef{collection}{}{\setunit{\collectionshelfmarkpunct}}%
+	  \setunit*{\collectionshelfmarkpunct}%
 	  \printfield{shelfmark}%
 	}%
 }
