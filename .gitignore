@@ -34,3 +34,5 @@
 *.xdy
 *.tdo
 biblatex-manuscripts-philology
+*_minted*
+*.fls
