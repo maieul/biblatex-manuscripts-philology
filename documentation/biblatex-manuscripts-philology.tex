@@ -19,8 +19,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.6.2},
-	date={01/11/2015},
+	revision={1.7.0},
+	date={10/02/2016},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -146,9 +146,12 @@ When loading the \biblatex package, use the option \opt{bibstyle} with value equ
 \begin{minted}{latex}
 \usepackage[bibstyle=manuscripts-noautoshorthand,otheroption…]{biblatex}
 \end{minted}
+
+The bibliographic style for other type entries is \enquote{verbose}, which call \enquote{authortitle} . However, if you need other bibliographic style, use the \verb+biblatex-multiple-dm+ package.
+
 \subsection{Citation of one manuscript}
 
-The manuscript description is supposed to be used with a \opt{citestyle} of the \emph{verbose} family (see the \biblatex handbook).
+The manuscript description is supposed to be used with a \opt{citestyle} of the \emph{verbose} family (see the \biblatex handbook), but you can use any other \opt{citestyle}. The only problematic point is that the manuscript citation will be verbose.
 
 So, if you use:
 \begin{minted}{latex}
@@ -177,7 +180,7 @@ If you want to print a list of manuscripts with detailed fields listed in \secre
 \cnt{details}.
 
 \begin{minted}{latex}
-\printshorthand[type=manuscript,env=details,title=Description of manuscripts]
+\printshorthands[type=manuscript,env=details,title=Description of manuscripts]
 \end{minted}
 
 In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a three time \LaTeX.
@@ -265,6 +268,11 @@ To use this package with the features of \verb+biblatex-realauthor+, you must us
 \section{Change history}
 
 \begin{changelog}
+
+
+\begin{release}{1.7.0}{2016-02-10}
+	\item Add italian translation.
+\end{release}
 
 \begin{release}{1.6.2}{2015-11-01}
 	\item Fix missing line break before \bibfield{scribe} or \bibfield{owner} fields when \bibfield{origin} field is empty.
