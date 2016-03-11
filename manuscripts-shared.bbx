@@ -127,12 +127,13 @@
 \DeclareFieldFormat{support}{\bibstring{#1}}
 
 \DeclareNameFormat{manuscript}{%
+  \nameparts{#1}%
   \ifnumgreater{\value{listcount}}{\value{liststart}}%
     {\multilistdelim}%
     {\bibstring[\mkmanuscriptdescriptionlabel]{\currentname}}%
   \ifuseprefix
-    {\usebibmacro{name:first-last}{#1}{#4}{#5}{#8}}
-    {\usebibmacro{name:first-last}{#1}{#4}{#6}{#8}}%
+    {\usebibmacro{name:given-family}{\namepartfamily}{\namepartgiven}{\namepartprefix}{\namepartsuffixi}}
+    {\usebibmacro{name:given-family}{\namepartfamily}{\namepartgiven}{\namepartprefixi}{\namepartsuffixi}}%
 }
 \DeclareNameAlias{scribe}{manuscript}
 \DeclareNameAlias{owner}{manuscript}
