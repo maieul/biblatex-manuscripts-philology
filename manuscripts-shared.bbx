@@ -14,7 +14,7 @@
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
 \ProvidesFile{manuscripts-commons}
-[2016/03/11 v1.8.0 biblatex bibliography style (MR)]
+[2016/06/07 v1.9.0 biblatex bibliography style (MR)]
 
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
@@ -265,13 +265,20 @@
   }
 }
 
-% 6. Prevent trouble with abbreviated forme (verbose family)
+% 6. Prevent trouble with abbreviated form (verbose family)
 
+\newcommand{\biblatexms@patchfail}[1]{\PackageError{biblatex-manuscripts-philology}{Fail to patch #1}{}}
 \RequirePackage{xpatch}
 \newbibmacro{manuscript:add:shortened}{\ifentrytype{manuscript}{\usebibmacro{location+library+collection+shelfmark}}{}}
 \newcommand{\manuscriptaddshortened}[1]{%
 	\def\do##1{%
-		  \xpretobibmacro{##1}{\usebibmacro{manuscript:add:shortened}}{}{}%
+		  \xpretobibmacro{##1}%
+		    {\usebibmacro{manuscript:add:shortened}}%
+		    {}%
+		    {\ifcsvoid{abx@macro@##1}%
+		      {}%
+		      {\biblatexms@patchfail{##1}}%
+		    }%
 		  }%
 	\docsvlist{#1}%
 }
