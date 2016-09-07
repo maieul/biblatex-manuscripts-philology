@@ -14,7 +14,7 @@
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
 \ProvidesFile{manuscripts-commons}
-[2016/06/07 v1.10.0 biblatex bibliography style (MR)]
+[2016/09/07 v1.10.1 biblatex bibliography style (MR)]
 
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
@@ -34,7 +34,7 @@
 
 \newcommand{\mkcolumns}[1]{\addspace\mkbibparens{#1}}
 \newcommand{\mklayer}[1]{\addspace\mkbibparens{#1}}
-\newcommand{\mklocation}[1]{\mkbibnamelast{#1}}
+\newcommand{\mklocation}[1]{\mkbibnamefamily{#1}}
 \newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
 \newcommand{\mkshcite}[1]{#1}
 

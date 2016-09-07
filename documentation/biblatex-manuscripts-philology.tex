@@ -19,8 +19,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.10.0},
-	date={07/06/2016},
+	revision={1.10.1},
+	date={07/09/2016},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -236,7 +236,7 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 
 \csitem{mkcolumns} the way the \bibfield{columns} are printed. By default, in parens.
 
-\csitem{mklocation} the way the \bibfield{location} is printed. By default, with the command \cs{mkbibnamelast}.
+\csitem{mklocation} the way the \bibfield{location} is printed. By default, with the command \cs{mkbibnamefamily}.
 
 \csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special field. By default, in bold, following with \cs{manuscriptdescriptionlabelpunct}.
 
@@ -272,6 +272,9 @@ To use this package with the features of \verb+biblatex-realauthor+, you must us
 
 \begin{changelog}
 
+\begin{release}{1.10.1}{2016-06-09}
+  \item Use \cs{mkbibnamefamily} instead of \cs{mkbibnamelast} (biblatex 3.3 and later).
+\end{release}
 
 \begin{release}{1.10.0}{2016-06-07}
   \item Add error message to know more quickly break compatibility with new releases of biblatex.
