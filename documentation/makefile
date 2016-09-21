@@ -1,9 +1,9 @@
 all: *tex *bib
 	xelatex --shell-escape biblatex-manuscripts-philology.tex
 	xelatex --shell-escape biblatex-manuscripts-philology.tex
-	xelatex --shell-escape example.tex
-	biber example
-	xelatex --shell-escape example.tex
+	xelatex --shell-escape biblatex-manuscripts-philology-example.tex
+	biber biblatex-manuscripts-philology-example
+	xelatex --shell-escape biblatex-manuscripts-philology-example.tex
 
 clean:
 	$(MAKE) -C documentation clean
