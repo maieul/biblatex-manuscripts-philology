@@ -19,8 +19,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.10.1},
-	date={07/09/2016},
+	revision={1.11.0},
+	date={21/09/2016},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -228,13 +228,17 @@ You can use the special field \bibfield{sortshelfmark} if the way you shelf mark
 You can redefine, with \cs{renewcommand} some commands defined in \file{manuscripts.bbx}. The commands starting with \cs{mk...} take one argument, the other take no argument. In these command, use the punctuation commands of \biblatex.
 
 \begin{ltxsyntax}
-\csitem{collectionshelfmarkpunct} the punct between \bibfield{collection} and \bibfield{shelfmark}. By default \cs{addspace}.
+\csitem{collectionshelfmarkpunct} the punctuation between \bibfield{collection} and \bibfield{shelfmark}. By default \cs{addspace}.
 
-\csitem{datingpagespunct} the punct between \bibfield{dating} and \bibfield{pages}. By default \cs{addcomma}\cs{addspace}. The \cs{isdot} is automatically called when printing \bibfield{dating} field. 
+\csitem{columnslayerpunct} the punctuation between \bibfield{columns} and \bibfield{layer}. By default \cs{addsemicolon}\cs{addspace}.
 
-\csitem{librarycollectionpunct} the punct between \bibfield{library} and \bibfield{collection}. By default \cs{addcomma}\cs{addspace}.
+\csitem{datingpagespunct} the punctuation between \bibfield{dating} and \bibfield{pages}. By default \cs{addcomma}\cs{addspace}. The \cs{isdot} is automatically called when printing \bibfield{dating} field. 
+
+\csitem{librarycollectionpunct} the punctuation between \bibfield{library} and \bibfield{collection}. By default \cs{addcomma}\cs{addspace}.
 
 \csitem{mkcolumns} the way the \bibfield{columns} are printed. By default, in parens.
+
+\csitem{mkcolumnslayer} the way the \bibfield{columns} and \bibfield{layer} fields are printed together. By default, in parens.
 
 \csitem{mklocation} the way the \bibfield{location} is printed. By default, with the command \cs{mkbibnamefamily}.
 
@@ -242,13 +246,13 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 
 \csitem{mkshcite} the way the shorthand is printed when using \cs{shcite}. By default, no special formatting.
 
-\cs{locationlibrarypunct} the punct between \bibfield{location} and \bibfield{library}.  By default \cs{addcolon}\cs{addspace}.
+\cs{locationlibrarypunct} the punctuation between \bibfield{location} and \bibfield{library}.  By default \cs{addcolon}\cs{addspace}.
 
-\cs{manuscriptdescriptionlabelpunct} the punct between label and text, for the special fields. By default \cs{addcolon}\cs{addspace}.
+\cs{manuscriptdescriptionlabelpunct} the punctuation between label and text, for the special fields. By default \cs{addcolon}\cs{addspace}.
 
-\cs{moreinterpunct} the punct between each special fields when printing in the same paragraph. By default \cs{addcolon}\cs{addspace}.
+\cs{moreinterpunct} the punctuation between each special fields when printing in the same paragraph. By default \cs{addcolon}\cs{addspace}.
 
-\cs{pagetotalpagespunct} the punct between \bibfield{pagetotal} and \bibfield{pages}. By default \cs{addcolon}\cs{addspace}.
+\cs{pagetotalpagespunct} the punctuation between \bibfield{pagetotal} and \bibfield{pages}. By default \cs{addcolon}\cs{addspace}.
 \end{ltxsyntax}
 
 \subsection{Commands to use in the \bibfield{pages} field}
@@ -272,7 +276,11 @@ To use this package with the features of \verb+biblatex-realauthor+, you must us
 
 \begin{changelog}
 
-\begin{release}{1.10.1}{2016-06-09}
+\begin{release}{1.11.0}{2016-09-21}
+  \item Fix typographical bug when using both \bibfield{layer} and \bibfield{columns} without \bibfield{pages} field.
+\end{release}
+
+\begin{release}{1.10.1}{2016-09-07}
   \item Use \cs{mkbibnamefamily} instead of \cs{mkbibnamelast} (biblatex 3.3 and later).
 \end{release}
 

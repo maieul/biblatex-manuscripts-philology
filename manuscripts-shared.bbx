@@ -14,7 +14,7 @@
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
 \ProvidesFile{manuscripts-commons}
-[2016/09/07 v1.10.1 biblatex bibliography style (MR)]
+[2016/09/21 v1.11.0 biblatex bibliography style (MR)]%
 
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
@@ -34,6 +34,7 @@
 
 \newcommand{\mkcolumns}[1]{\addspace\mkbibparens{#1}}
 \newcommand{\mklayer}[1]{\addspace\mkbibparens{#1}}
+\newcommand{\mkcolumnslayer}[1]{\addspace\mkbibparens{#1}}%
 \newcommand{\mklocation}[1]{\mkbibnamefamily{#1}}
 \newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
 \newcommand{\mkshcite}[1]{#1}
@@ -42,6 +43,7 @@
 \newcommand{\manuscriptdescriptionlabelpunct}{\addcolon\addspace}
 \newcommand{\moreinterpunct}{\addsemicolon\addspace}
 \newcommand{\pagetotalpagespunct}{\addcolon\addspace}
+\newcommand{\columnslayerpunct}{\addsemicolon\addspace}%
 
 
 \def\recto{r}
@@ -102,11 +104,39 @@
   
 \newbibmacro{manuscript:pages}{%
 	\printfield{pagetotal}%
-	\iffieldundef{columns}{}{\bibstring[\mkcolumns]{\strfield{columns}column}}%
-	\setunit{\pagetotalpagespunct}%
-	\printfield{pages}%
-	\iffieldundef{layer}{}{\bibstring[\mklayer]{\strfield{layer}layer}}%
+	\iffieldundef{pages}%
+    {%
+    \usebibmacro{manuscript:columns+layer}%
+    }%
+    {%
+    \usebibmacro{manuscript:columns}%
+	  \setunit{\pagetotalpagespunct}%
+	  \printfield{pages}%
+	  \usebibmacro{manuscript:layer}%
+	  }%
 } 
+
+\newbibmacro{manuscript:columns+layer}{%
+ \ifboolexpr{test {\iffieldundef{columns}} or test{\iffieldundef{layer}}}{%
+   \usebibmacro{manuscript:columns}%
+   \usebibmacro{manuscript:layer}%
+ }%
+ {%
+   \printtext[columns+layer]{%
+     \bibstring{\strfield{columns}column}%
+     \setunit{\columnslayerpunct}%
+     \bibstring{\strfield{layer}layer}%
+   }%
+ }%
+}%
+
+\newbibmacro{manuscript:columns}{%
+  \iffieldundef{columns}{}{\bibstring[\mkcolumns]{\strfield{columns}column}}%
+}%
+
+\newbibmacro{manuscript:layer}{%
+  \iffieldundef{layer}{}{\bibstring[\mklayer]{\strfield{layer}layer}}%
+}%
 
 \newbibmacro{support+dating}{%
   \printfield{support}%
@@ -122,9 +152,10 @@
 \DeclareFieldFormat{collection+shelfmark}{%
   \printtext[title]{#1}%
 }
-\DeclareFieldFormat{dating}{#1\isdot}
+\DeclareFieldFormat{columns+layer}{\mkcolumnslayer{#1}}%
+\DeclareFieldFormat{dating}{#1\isdot}%
 
-\DeclareFieldFormat{support}{\bibstring{#1}}
+\DeclareFieldFormat{support}{\bibstring{#1}}%
 
 \DeclareNameFormat{manuscript}{%
   \nameparts{#1}%
