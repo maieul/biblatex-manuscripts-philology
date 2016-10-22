@@ -209,14 +209,15 @@ If you use \opt{manuscripts-noautoshorthand} version, this list could contain ma
 
 \label{sorting} If you doesn't use the shorthands' feature, you can want to print a list of manuscripts, sorted by Town, Library, Collection, Shelfmark.
 
-You can use, for that, the option \opt{sorting=manuscripts}. 
+You can use, for that, the option \opt{sorting=manuscripts} of a \env{refcontext} environment. 
 
 \begin{minted}{latex}
+\begin{refcontext}[sorting=manuscripts]{}
 \printbibliography[
   type=manuscript,
   title=Description of other manuscripts,
-  sorting=manuscripts
 ]
+\end{refcontext}
 \end{minted}
 
 You can use the special field \bibfield{sortshelfmark} if the way you shelf marks are sorted is not the way they are printed (like in normal entry type, you can use \bibfield{sorttitle}.
