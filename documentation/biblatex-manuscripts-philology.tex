@@ -1,5 +1,6 @@
 \documentclass{ltxdockit}[2011/03/25]
 \usepackage{btxdockit}
+\usepackage{metalogo}
 \usepackage{fontspec}
 \usepackage[mono=false]{libertine}
 \usepackage{microtype}
@@ -19,8 +20,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.11.0},
-	date={21/09/2016},
+	revision={1.12.0},
+	date={23/10/2016},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -222,6 +223,26 @@ You can use, for that, the option \opt{sorting=manuscripts} of a \env{refcontext
 
 You can use the special field \bibfield{sortshelfmark} if the way you shelf marks are sorted is not the way they are printed (like in normal entry type, you can use \bibfield{sorttitle}.
 
+However, using different sorting scheme for different bibliography in the same document implies that biber will insert many time the bibliographic entries in the \verb+.bbl+ file, once by sorting scheme.
+If you have a bib bibliography, that could make \LaTeX finishing the next run by a\\ \verb`TeX capacity exceeded, sorry [main memory size=<something>]`
+\\
+because this will full the memory\footnote{The problem should not happen if you use \LuaLaTeX, because, contrary to \XeLaTeX\ and \LaTeX, \LuaLaTeX\ has no limit in memory, except the limit of the computer\ldots\ which should be enough with recent computer.}.
+
+In order to prevent this, the package also provides sorting schemes to get the same sorting scheme for manuscripts and other entries, even if separated in the final bibliography.
+The following sorting schemes are adapted for the standard \biblatex\ sorting schemes:
+\begin{itemize}
+  \item \verb`nty+manuscripts`, adapted from \verb+nty+; 
+  \item \verb-nyt+manuscripts-, adapted from \verb-nyt-;
+  \item \verb-nyvt+manuscripts-, adapted from \verb-nyvt-.
+\end{itemize}
+
+To use these scheme, don't use \env{recontext} environment, but simply the global option when loading \biblatex:
+\begin{minted}{tex}
+\usepackage[sorting=nty+manuscripts,…]{biblatex}
+\end{minted}
+
+If you need more sorting scheme, please contact us, we could integrate them easily.
+ 
 \section{Customization}
 
 \subsection{Commands}
@@ -276,6 +297,10 @@ To use this package with the features of \verb+biblatex-realauthor+, you must us
 \section{Change history}
 
 \begin{changelog}
+
+\begin{release}{1.12.0}{2016-23-10}
+  \item New sorting schemes.
+\end{release}
 
 \begin{release}{1.11.0}{2016-09-21}
   \item Fix typographical bug when using both \bibfield{layer} and \bibfield{columns} fields without \bibfield{pages} field.

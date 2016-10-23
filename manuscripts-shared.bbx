@@ -14,7 +14,7 @@
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
 \ProvidesFile{manuscripts-commons}
-[2016/09/21 v1.11.0 biblatex bibliography style (MR)]%
+[2016/10/23 v1.12.0 biblatex bibliography style (MR)]%
 
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
@@ -271,13 +271,8 @@
 
 
 %% 5.6 Sorting
-\DeclareSortingScheme{manuscripts}{
-  \sort{
-    \field{presort}
-  }
-  \sort[final]{
-    \field{sortkey}
-  }
+
+\def\bbx@manuscripts@sorting{
   \sort{
   	\field{location}
 	  \literal{0000}
@@ -295,6 +290,111 @@
     \field[padside=left,padwidth=50,padchar=0]{shelfmark}
   }
 }
+
+
+\DeclareSortingScheme{manuscripts}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \bbx@manuscripts@sorting
+}
+
+% Adaptation from biblatex.def
+
+\DeclareSortingScheme{nty+manuscripts}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+  \bbx@manuscripts@sorting
+}
+
+\DeclareSortingScheme{nyt+manuscripts}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+  \bbx@manuscripts@sorting
+}
+
+\DeclareSortingScheme{nyvt+manuscripts}{
+  \sort{
+    \field{presort}
+  }
+  \sort[final]{
+    \field{sortkey}
+  }
+  \sort{
+    \field{sortname}
+    \field{author}
+    \field{editor}
+    \field{translator}
+    \field{sorttitle}
+    \field{title}
+  }
+  \sort{
+    \field{sortyear}
+    \field{year}
+  }
+  \sort{
+    \field{volume}
+    \literal{0}
+  }
+  \sort{
+    \field{sorttitle}
+    \field{title}
+  }
+  \bbx@manuscripts@sorting
+}
+
+
 
 % 6. Prevent trouble with abbreviated form (verbose family)
 
