@@ -13,5 +13,5 @@
 % The Current Maintainer of this work is Maïeul Rouquette
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 \ProvidesFile{manuscripts.dbx}
-[2016/10/23 v1.12.0 biblatex bibliography style (MR)]
+[2016/10/28 v1.12.1 biblatex bibliography style (MR)]
 \blx@inputonce{manuscripts-shared.dbx}{}{}{}{}{}
