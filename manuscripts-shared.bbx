@@ -14,7 +14,7 @@
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
 \ProvidesFile{manuscripts-commons}
-[2016/10/28 v1.12.1 biblatex bibliography style (MR)]%
+[2017/01/31 v1.12.2 biblatex bibliography style (MR)]%
 
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
@@ -204,17 +204,17 @@
   \usebibmacro{bibindex}%
   \usebibmacro{begentry}%
   \usebibmacro{location+library+collection+shelfmark}%
-  \newunit
+  \newunit%
   \printlist{language}%
-  \newunit\newblock
+  \newunit\newblock%
   \printfield{howpublished}%
   \newunit\newblock
   \printfield{note}%
-  \newunit\newblock
-  \usebibmacro{support+dating}
-  \setunit{\datingpagespunct}
-  \usebibmacro{manuscript:pages}
-  \iftoggle{bbx:related}
+  \newunit\newblock%
+  \usebibmacro{support+dating}%
+  \setunit{\datingpagespunct}%
+  \usebibmacro{manuscript:pages}%
+  \iftoggle{bbx:related}%
     {\newunit\newblock%
      \usebibmacro{related:init}%
      \usebibmacro{related}}
@@ -224,25 +224,25 @@
     {\usebibmacro{url+urldate}}%
     {}%
   \usebibmacro{more+annotation+catalog}%
-  \usebibmacro{finentry}
+  \usebibmacro{finentry}%
   }
 
 \DeclareBibliographyDriver{cite:manuscript}{%For biblatex-chicago styles
   \usebibmacro{bibindex}%
   \usebibmacro{location+library+collection+shelfmark}%
-  \newunit
+  \newunit%
   \printlist{language}%
-  \newunit\newblock
+  \newunit\newblock%
   \printfield{howpublished}%
-  \newunit\newblock
+  \newunit\newblock%
   \printfield{note}%
-  \newunit\newblock
-  \usebibmacro{support+dating}
-  \newunit\newblock
-  \setunit{\datingpagespunct}
-  \usebibmacro{manuscript:pages}
+  \newunit\newblock%
+  \usebibmacro{support+dating}%
+  \newunit\newblock%
+  \setunit{\datingpagespunct}%
+  \usebibmacro{manuscript:pages}%
   \usebibmacro{more+annotation+catalog}%
-  \usebibmacro{finentry}
+  \usebibmacro{finentry}%
 }
 
 %% 5.2 Citation command
