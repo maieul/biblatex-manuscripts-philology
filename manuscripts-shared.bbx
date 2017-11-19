@@ -271,6 +271,9 @@
 
 
 %% 5.6 Sorting
+\ifdef{\DeclareSortingTemplate}%
+  {}
+  {\let\DeclareSortingTemplate\DeclareSortingScheme}
 
 \def\bbx@manuscripts@sorting{
   \sort{
@@ -292,7 +295,7 @@
 }
 
 
-\DeclareSortingScheme{manuscripts}{
+\DeclareSortingTemplate{manuscripts}{
   \sort{
     \field{presort}
   }
@@ -304,7 +307,7 @@
 
 % Adaptation from biblatex.def
 
-\DeclareSortingScheme{nty+manuscripts}{
+\DeclareSortingTemplate{nty+manuscripts}{
   \sort{
     \field{presort}
   }
@@ -334,7 +337,7 @@
   \bbx@manuscripts@sorting
 }
 
-\DeclareSortingScheme{nyt+manuscripts}{
+\DeclareSortingTemplate{nyt+manuscripts}{
   \sort{
     \field{presort}
   }
@@ -364,7 +367,7 @@
   \bbx@manuscripts@sorting
 }
 
-\DeclareSortingScheme{nyvt+manuscripts}{
+\DeclareSortingTemplate{nyvt+manuscripts}{
   \sort{
     \field{presort}
   }
