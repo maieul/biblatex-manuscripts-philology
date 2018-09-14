@@ -55,7 +55,7 @@
 
 
 \newbibmacro{annotation}{%
-    \iffieldundef{annotation}{}{\printfield{annotation}}
+    \printfield{annotation}%
 }
 
 \newbibmacro{manuscript:more}{%
@@ -77,8 +77,7 @@
 }
 
 \newbibmacro{catalog}{%
-  \iffieldundef{catalog}{}%
-    {\printfield{catalog}}%
+  \printfield{catalog}%
 }
 
 \newbibmacro{collection+shelfmark}{%
