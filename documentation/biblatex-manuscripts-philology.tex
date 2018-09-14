@@ -127,6 +127,7 @@ There are also two special fields, which are printed only if we ask for them exp
   catalog = {[prenote1][postnote1]{key1}[prenote2][postnote2]{key2}}
 \end{minted}
 
+\fielditem{content}{literal} description of the manuscript's content, can be used instead of \bibfield{annotation}. If you want to add paragraphs inside it, you must use the \cs{par} command between each paragraph.
 
 \fielditem{origin}{list} the places where the manuscript was written.
 
@@ -265,6 +266,9 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 \csitem{mklocation} the way the \bibfield{location} is printed. By default, with the command \cs{mkbibnamefamily}.
 
 \csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special fields. By default, in bold, followed with \cs{manuscriptdescriptionlabelpunct}.
+
+\csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special fields which can contains paragraph (e.g. \bibfield{content}.
+B default, in bold, followed with \cs{par}.
 
 \csitem{mkshcite} the way the shorthand is printed when using \cs{shcite}. By default, no special formatting.
 
