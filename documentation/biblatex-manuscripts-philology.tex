@@ -293,7 +293,27 @@ The \file{manuscripts-shared.bbx} file defines bibmacros and field formats (read
 
 To use this package with the features of \verb+biblatex-realauthor+, you must use the package \verb+biblatex-multiple-dm+.
 
+\section{Migration to v.~1.13}
 
+The version 1.13 adds some modification which could require modifications in your own customization.
+
+\begin{enumerate}
+  \item We have decided to prefix all bibmacros concerning manuscript with \verb+manuscript:+.
+    If you have redefined one of the following macros, or if you have created your own macros which call them, you should adapt your code:
+    \begin{itemize}
+      \item \verb+annotation+;
+      \item \verb+catalog+;
+      \item \verb|collection+shelfmark|;
+      \item \verb+date/dating+;
+      \item \verb|more+annotation+catalog|;
+      \item \verb|support+dating|.
+    \end{itemize}
+  \item Now, the annotation field is introduced with a label.
+ If you don't want this label, add into your preamble/custom style:
+ \begin{minted}{tex}
+   \DeclareFieldFormat{annotation}{#1}
+ \end{minted}
+\end{enumerate}
 \section{Change history}
 
 \begin{changelog}
