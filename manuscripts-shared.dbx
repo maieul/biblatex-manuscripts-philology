@@ -15,8 +15,40 @@
 \ProvidesFile{manuscripts-shared.dbx}%
 [2017/11/26 v1.12.3 biblatex bibliography style (MR)]%
 \DeclareDatamodelEntrytypes{manuscript}
-\DeclareDatamodelFields[type=field,datatype=literal]{catalog,dating,shortlibrary,columns, collection,shortcollection,usualtitle,shelfmark,sortshelfmark,support,columns,layer}
-\DeclareDatamodelFields[type=list,datatype=name]{scribe,owner}
+\DeclareDatamodelFields[type=field,datatype=literal]{%
+  catalog,
+  dating,
+  shortlibrary,
+  columns,
+  collection,
+  shortcollection,
+  usualtitle,
+  shelfmark,
+  sortshelfmark,
+  support,
+  columns,
+  layer
+}
+\DeclareDatamodelFields[type=list,datatype=name]{
+  scribe,
+  owner
+}
 \DeclareDatamodelFields[type=list,datatype=literal]{origin}
-\DeclareDatamodelEntryfields[manuscript]{catalog,dating,shortlibrary,shortcollection,columns,languages, collection,usualtitle,shelfmark,sortshelfmark,support,columns,origin,scribe,owner}
+\DeclareDatamodelEntryfields[manuscript]{
+  catalog,
+  dating,
+  shortlibrary,
+  shortcollection,
+  columns,
+  languages, 
+  collection,
+  usualtitle,
+  shelfmark,
+  sortshelfmark,
+  support,
+  columns,
+  origin,
+  scribe,
+  owner
+}
 
