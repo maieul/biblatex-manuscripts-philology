@@ -27,12 +27,10 @@
   sortshelfmark,
   support,
   columns,
-  layer
-}
+  layer}
 \DeclareDatamodelFields[type=list,datatype=name]{
   scribe,
-  owner
-}
+  owner}
 \DeclareDatamodelFields[type=list,datatype=literal]{origin}
 \DeclareDatamodelEntryfields[manuscript]{
   catalog,
@@ -48,8 +46,8 @@
   support,
   columns,
   layer,
+  content
   origin,
   scribe,
-  owner
-}
+  owner}
 
