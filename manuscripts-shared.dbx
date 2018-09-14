@@ -27,7 +27,8 @@
   sortshelfmark,
   support,
   columns,
-  layer}
+  layer,
+  content}
 \DeclareDatamodelFields[type=list,datatype=name]{
   scribe,
   owner}

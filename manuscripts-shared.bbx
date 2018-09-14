@@ -37,6 +37,7 @@
 \newcommand{\mkcolumnslayer}[1]{\addspace\mkbibparens{#1}}%
 \newcommand{\mklocation}[1]{\mkbibnamefamily{#1}}
 \newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
+\newcommand{\mkmanuscriptdescriptionlabelparagraphed}[1]{\textbf{#1}\par}
 \newcommand{\mkshcite}[1]{#1}
 
 \newcommand{\locationlibrarypunct}{\addcolon\addspace}
@@ -58,6 +59,9 @@
     \printfield{annotation}%
 }
 
+\newbibmacro{manuscript:content}{%
+    \printfield{content}%
+}%
 \newbibmacro{manuscript:more}{%
     \printlist{origin}%
     \setunit*{\moreinterpunct}%
@@ -71,6 +75,8 @@
 	\usebibmacro{manuscript:more}%
 	\setunit{\finentrypunct\par}%
 	\usebibmacro{manuscript:content}%
+	\setunit{\finentrypunct\par}%
+	\usebibmacro{manuscript:annotation}%
 	\setunit{\finentrypunct\par}%
 	\usebibmacro{manuscript:catalog}%
   }{}%
@@ -178,6 +184,13 @@
     {\bibstring[\mkmanuscriptdescriptionlabel]{origin}}%
   #1%
   }
+
+\DeclareFieldFormat{manuscript:paragraphedfield}{%
+  \bibstring[\mkmanuscriptdescriptionlabelparagraphed]{\currentfield}%
+  #1%
+}%
+\DeclareFieldAlias{content}{manuscript:paragraphedfield}%
+\DeclareFieldAlias{annotation}{manuscript:paragraphedfield}%
 
 % 4. Printshorthands Environment
 
