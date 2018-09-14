@@ -54,7 +54,7 @@
 % 2. Some macros
 
 
-\newbibmacro{annotation}{%
+\newbibmacro{manuscript:annotation}{%
     \printfield{annotation}%
 }
 
@@ -65,22 +65,22 @@
     \setunit*{\moreinterpunct}%
     \printnames{owner}%
 }
-\newbibmacro{more+annotation+catalog}{%
+\newbibmacro{manuscript:more+annotation+catalog}{%
   \iftoggle{shorthand:details}{%
     \setunit{\finentrypunct\par}%
 	\usebibmacro{manuscript:more}%
 	\setunit{\finentrypunct\par}%
-	\usebibmacro{annotation}%
+	\usebibmacro{manuscript:content}%
 	\setunit{\finentrypunct\par}%
-	\usebibmacro{catalog}%
+	\usebibmacro{manuscript:catalog}%
   }{}%
 }
 
-\newbibmacro{catalog}{%
+\newbibmacro{manuscript:catalog}{%
   \printfield{catalog}%
 }
 
-\newbibmacro{collection+shelfmark}{%
+\newbibmacro{manuscript:collection+shelfmark}{%
   \printtext[collection+shelfmark]{%
 	  \printfield{collection}%
 	  \setunit*{\collectionshelfmarkpunct}%
@@ -88,7 +88,7 @@
 	}%
 }
 
-\newbibmacro{date/dating}{%
+\newbibmacro{manuscript:date/dating}{%
 	\iffieldundef{dating}{\usebibmacro{date}}
 	  {\printfield{dating}}%
 }
@@ -98,7 +98,7 @@
 	\setunit{\locationlibrarypunct}%
 	\printfield{library}%
 	\setunit{\librarycollectionpunct}%
-	\usebibmacro{collection+shelfmark}%
+	\usebibmacro{manuscript:collection+shelfmark}%
 }
   
 \newbibmacro{manuscript:pages}{%
@@ -137,10 +137,10 @@
   \iffieldundef{layer}{}{\bibstring[\mklayer]{\strfield{layer}layer}}%
 }%
 
-\newbibmacro{support+dating}{%
+\newbibmacro{manuscript:support+dating}{%
   \printfield{support}%
   \newunit%
-  \usebibmacro{date/dating}%
+  \usebibmacro{manuscript:date/dating}%
   }
 
 % 3. Some Field or List Format
@@ -210,7 +210,7 @@
   \newunit\newblock
   \printfield{note}%
   \newunit\newblock%
-  \usebibmacro{support+dating}%
+  \usebibmacro{manuscript:support+dating}%
   \setunit{\datingpagespunct}%
   \usebibmacro{manuscript:pages}%
   \iftoggle{bbx:related}%
@@ -222,7 +222,7 @@
   \iftoggle{bbx:url}%
     {\usebibmacro{url+urldate}}%
     {}%
-  \usebibmacro{more+annotation+catalog}%
+  \usebibmacro{manuscript:more+annotation+catalog}%
   \usebibmacro{finentry}%
   }
 
@@ -236,11 +236,11 @@
   \newunit\newblock%
   \printfield{note}%
   \newunit\newblock%
-  \usebibmacro{support+dating}%
+  \usebibmacro{manuscript:support+dating}%
   \newunit\newblock%
   \setunit{\datingpagespunct}%
   \usebibmacro{manuscript:pages}%
-  \usebibmacro{more+annotation+catalog}%
+  \usebibmacro{manuscript:more+annotation+catalog}%
   \usebibmacro{finentry}%
 }
 
