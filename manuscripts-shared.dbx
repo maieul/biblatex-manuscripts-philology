@@ -29,11 +29,11 @@
   columns,
   layer,
   content}
-\DeclareDatamodelFields[type=list,datatype=name]{
+\DeclareDatamodelFields[type=list,datatype=name]{%
   scribe,
   owner}
 \DeclareDatamodelFields[type=list,datatype=literal]{origin}
-\DeclareDatamodelEntryfields[manuscript]{
+\DeclareDatamodelEntryfields[manuscript]{%
   catalog,
   dating,
   shortlibrary,
