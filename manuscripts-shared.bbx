@@ -160,7 +160,7 @@
 \DeclareFieldFormat{columns+layer}{\mkcolumnslayer{#1}}%
 \DeclareFieldFormat{dating}{#1\isdot}%
 
-\DeclareFieldFormat{support}{\bibstring{#1}}%
+\DeclareFieldFormat{support}{\ifbibstring{#1}{\bibstring{#1}}{#1}}%
 
 \DeclareNameFormat{manuscript}{%
   \nameparts{#1}%
