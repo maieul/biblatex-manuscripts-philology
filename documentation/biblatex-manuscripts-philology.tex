@@ -14,6 +14,7 @@
 \newcommand{\biblatex}{biblatex\xspace}
 \pretocmd{\bibfield}{\sloppy}{}{}
 \pretocmd{\bibtype}{\sloppy}{}{}
+\newcommand{\meta}[1]{\texttt{<#1>}}
 % Meta-datas
 \titlepage{%
 	title={Manuscripts description for philology with biblatex},
@@ -107,8 +108,13 @@ This bibtype can use the optional fields:
 
 \fielditem{shorthand}{literal} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the version \opt{manuscript-noautoshorthand} is loaded. See \secref{noautoshorthand}.
 
-\fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
+\listitem{script}{key or literal} the script, i. e. the \emph{writing system} of the manuscript (for example Devanāgarī, Śāradā).
+ You can use or a key-value system, or just use literal value. No default keys are defined.
+ To define your own key, see \secref{key-definition}.
+ 
 
+\fielditem{support}{key or literal} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
+ To define your own key, see \secref{key-definition}.
 \end{fieldlist}
 
 \subsection{Special}\label{fields:special}
@@ -245,6 +251,30 @@ To use these scheme, don't use \env{recontext} environment, but simply the globa
 If you need more sorting scheme, please contact us, we could integrate them easily.
  
 \section{Customization}
+
+\subsection{Create your own keys}\label{key-definition}
+
+The \bibfield{support} and \bibfield{script} fields can contains either literal string, either key that \biblatex will transform to a value.
+
+That use only standard \biblatex  localization string.
+ 
+To define your owns key, add into your preamble:
+\begin{minted}{tex}
+  \NewBibliographyString{<key1>}
+  \NewBibliographyString{<key2>}
+  …
+  \NewBibliographyString{<keyn>}
+  \DefineBibliographyStrings{%
+    <key1> = {<value1},
+    <key2> = {<value2>},
+    …,
+    <keyn> = {<valuen>}
+  }
+
+\end{minted}
+ 
+Where \meta{key1}, \meta{key2} \ldots\ \meta{keyn} must be replaced by the keys, and \meta{value1}, \meta{value2} \ldots\ \meta{valuen} by the value.
+ 
 
 \subsection{Commands}
 
