@@ -32,7 +32,9 @@
 \DeclareDatamodelFields[type=list,datatype=name]{%
   scribe,
   owner}
-\DeclareDatamodelFields[type=list,datatype=literal]{origin}
+\DeclareDatamodelFields[type=list,datatype=literal]{%
+  script,
+  origin}
 \DeclareDatamodelEntryfields[manuscript]{%
   catalog,
   dating,
@@ -44,6 +46,7 @@
   usualtitle,
   shelfmark,
   sortshelfmark,
+  script,
   support,
   columns,
   layer,

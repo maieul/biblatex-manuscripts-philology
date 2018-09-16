@@ -143,11 +143,6 @@
   \iffieldundef{layer}{}{\bibstring[\mklayer]{\strfield{layer}layer}}%
 }%
 
-\newbibmacro{manuscript:support+dating}{%
-  \printfield{support}%
-  \newunit%
-  \usebibmacro{manuscript:date/dating}%
-  }
 
 % 3. Some Field or List Format
 \DeclareFieldFormat{catalog}{%
@@ -161,6 +156,12 @@
 \DeclareFieldFormat{dating}{#1\isdot}%
 
 \DeclareFieldFormat{support}{\ifbibstring{#1}{\bibstring{#1}}{#1}}%
+\DeclareListFormat[]{script}{%
+  \ifnumgreater{\value{listcount}}{\value{liststart}}%
+    {\multilistdelim}%
+    {}%
+  \ifbibstring{#1}{\bibstring{#1}}{#1}%
+}%
 
 \DeclareNameFormat{manuscript}{%
   \nameparts{#1}%
@@ -223,7 +224,11 @@
   \newunit\newblock
   \printfield{note}%
   \newunit\newblock%
-  \usebibmacro{manuscript:support+dating}%
+  \printfield{support}%
+  \newunit%
+  \printlist{script}%
+  \newunit%
+  \usebibmacro{manuscript:date/dating}%
   \setunit{\datingpagespunct}%
   \usebibmacro{manuscript:pages}%
   \iftoggle{bbx:related}%
