@@ -10,7 +10,7 @@
 \usepackage{shortvrb}
 \usepackage{pifont}
 \usepackage{minted}
-% Usefull commands
+% Useful commands
 \newcommand{\biblatex}{biblatex\xspace}
 \pretocmd{\bibfield}{\sloppy}{}{}
 \pretocmd{\bibtype}{\sloppy}{}{}
@@ -32,12 +32,15 @@
 \tableofcontents
 \section{Introduction}
 \subsection{Goals}
-The \biblatex package defines some standard fields for entry, and allows to use extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of extra fields needed to describe manuscripts in an introduction of a critical edition of classical texts is too great to use these fields' names without mistake.
+The \biblatex package defines some standard fields for entry, and allows the use 
+of extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of 
+extra fields needed to describe manuscripts in an introduction of a critical edition 
+of classical texts is too great to use these fields' names without mistake.
 
-The aim of this package is double:
+The aim of this package is twofold:
 
 \begin{itemize}
-\item Provides new datatype: \bibtype{manuscripts} with adapted fields.
+\item Provides new datatype: \bibtype{manuscripts} with appropriate fields.
 \item Provides new bibliography styles to print the list of manuscripts:
 \begin{itemize}
 	\item As a detailed list of witnesses of a text.
@@ -48,7 +51,10 @@ The aim of this package is double:
 You can see minimal example in the file \href{file:example.pdf}{example.pdf}.
 \subsection{Credits}
 
-This package was created for Maïeul Rouquette's PHD\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licenced on the \emph{\LaTeX\ Project Public Licence}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}.
+This package was created for Maïeul Rouquette's 
+PhD\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licenced on 
+the \emph{\LaTeX\ Project Public 
+Licence}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}.
 
 All issues can be submitted, in French or English, in the GitHub issues page\footnote{\url{https://github.com/maieul/biblatex-manuscripts-philology/issues}.}.
 
@@ -65,14 +71,18 @@ This bibtype has these mandatory fields:
 
 \begin{fieldlist}
 
-\fielditem{collection}{literal} the collection in the library. For example: \verb+Supplément grec+.
+\fielditem{collection}{literal} the collection in the library. For example: 
+\verb+Supplément grec+ or \verb+Vaidyaka+.
 
-\fielditem{location}{literal} the city or place where the manuscript is kept. For example: \verb+Paris+ or \verb+Oxford+.
+\fielditem{location}{literal} the city or place where the manuscript is kept. For 
+example: \verb+Paris+ or \verb+Oxford+ or \verb+Varanasi+.
 
-\fielditem{library}{literal} the library where the manuscript is kept. For example: \verb+Bibliothèque Nationale de France+.
+\fielditem{library}{literal} the library where the manuscript is kept. For example: 
+\verb+Bibliothèque Nationale de France+ or \verb+Sarasvatī Bhavan Library+.
 
 
-\fielditem{shelfmark}{literal} the shelfmark in the collection. For example: \verb+241+.
+\fielditem{shelfmark}{literal} the shelfmark in the collection. For example: 
+\verb+241+.  Do not prefix with “MS.”
 \end{fieldlist}
 
 \subsection{Optional}
@@ -80,11 +90,22 @@ This bibtype can use the optional fields:
 
 \begin{fieldlist}
 
-\fielditem{bookpagination}{key} the pagination of the manuscript which is studied. The standard pagination keys are allowed, but the package adds a new key: \texttt{folio}. The value of this field is to be used for printing the \bibfield{pages} and \bibfield{pagetotal}.
+\fielditem{bookpagination}{key} the pagination or foliation of the manuscript 
+which is studied. The standard \biblatex pagination keys are allowed, but the 
+package adds a new key: \texttt{folio}. 
+
+The value of this field will be used
+when printing the \bibfield{pages} and \bibfield{pagetotal}.
+E.g., ``ff.\ 3--5'' (when  \bibfield{bookpagination} =
+“folio”) or ``pp.\ 88--99'' (“page”).  See the \biblatex manual for details.
 
 \fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed: \verb+1+ or \verb+2+.
 
-\fielditem{dating}{literal} the dating of the manuscript. It can be for example a century.
+\fielditem{dating}{literal} the dating of the manuscript. It can be for example a 
+century.  
+
+With non-Gregorian calendars, enter the converted Gregorian date here, and the 
+date in the original era in the \bibfield{annotation} field.
 
 \label{field:layer}\fielditem{layer}{key} for palimpsests, the layer which is studied. There is two possibility: 
 	\begin{description}
@@ -98,17 +119,26 @@ This bibtype can use the optional fields:
 \fielditem{shortlibrary}{literal} the abreviated form of the library. Not used by the default style.
 
 
-\fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
+\fielditem{pages}{range} the pages which are studied in the manuscript. In this 
+field, you can use the macros \cs{recto} and \cs{verso}.  This value will be used 
+when formatting citations.
 
-\fielditem{pagetotal}{integer} the number of pages in the manuscript.
+Use this field also for manuscript folio numbers.  E.g., “3\cs{verso}--5\cs{recto}.”
+
+\fielditem{pagetotal}{integer} the number of pages or folios in the manuscript.
 
 
-\fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination keys are allowed, but the package adds a new key: \verb+folio+.
+\fielditem{pagination}{key} the pagination of part of manuscript which is studied. 
+The standard pagination keys are allowed, but the package adds a new key: 
+\verb+folio+.  This value will control the formatting the 
+$\langle$\emph{postnote}$rangle$ argument of a citation command (see the 
+\biblatex manual for details).
 
 
 \fielditem{shorthand}{literal} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the version \opt{manuscript-noautoshorthand} is loaded. See \secref{noautoshorthand}.
 
-\listitem{script}{key or literal} the script, i. e. the \emph{writing system} of the manuscript (for example Devanāgarī, Śāradā).
+\listitem{script}{key or literal} the script, i. e. the \emph{writing system} of the 
+manuscript (for example Devanāgarī, Śāradā, Cyrillic).
  You can use or a key-value system, or just use literal value. No default keys are defined.
  To define your own key, see \secref{key-definition}.
  
@@ -118,7 +148,7 @@ This bibtype can use the optional fields:
   \item \texttt{palm-leaf};
   \item \texttt{papyrus};
   \item \texttt{paper};
-  \item \texttt{parchment}\footnote{Historically, was \texttt{pergament}, which is kept only for ascendant compatibility.}.
+  \item \texttt{parchment}.
 \end{itemize}
  To define your own key, see \secref{key-definition}.
 \end{fieldlist}
@@ -139,7 +169,10 @@ There are also two special fields, which are printed only if we ask for them exp
   catalog = {[prenote1][postnote1]{key1}[prenote2][postnote2]{key2}}
 \end{minted}
 
-\fielditem{content}{literal} description of the manuscript's content, can be used instead of \bibfield{annotation}. If you want to add paragraphs inside it, you must use the \cs{par} command between each paragraph.
+\fielditem{content}{literal} description of the manuscript's content, can be used 
+with or instead of \bibfield{annotation}. It starts a new section of the description 
+output. If you want to add paragraphs inside it, you must use the \cs{par} 
+command between each paragraph.  E.g., ``Covers chapters 1--3 only.''
 
 \fielditem{origin}{list} the places where the manuscript was written.
 
