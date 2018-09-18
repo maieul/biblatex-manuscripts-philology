@@ -28,7 +28,7 @@
   support,
   columns,
   layer,
-  content}
+  contents}
 \DeclareDatamodelFields[type=list,datatype=name]{%
   scribe,
   owner}
@@ -50,7 +50,7 @@
   support,
   columns,
   layer,
-  content
+  contents,
   origin,
   scribe,
   owner}
