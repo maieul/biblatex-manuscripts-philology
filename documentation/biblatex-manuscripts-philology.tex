@@ -10,18 +10,19 @@
 \usepackage{shortvrb}
 \usepackage{pifont}
 \usepackage{minted}
-% Usefull commands
+% Useful commands
 \newcommand{\biblatex}{biblatex\xspace}
 \pretocmd{\bibfield}{\sloppy}{}{}
 \pretocmd{\bibtype}{\sloppy}{}{}
+\newcommand{\meta}[1]{\texttt{<#1>}}
 % Meta-datas
 \titlepage{%
 	title={Manuscripts description for philology with biblatex},
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={1.12.3},
-	date={26/11/2017},
+	revision={2.0.0},
+	date={19/09/2018},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -31,12 +32,15 @@
 \tableofcontents
 \section{Introduction}
 \subsection{Goals}
-The \biblatex package defines some standard fields for entry, and allows to use extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of extra fields needed to describe manuscripts in an introduction of a critical edition of classical texts is too great to use these fields' names without mistake.
+The \biblatex package defines some standard fields for entry, and allows the use 
+of extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of 
+extra fields needed to describe manuscripts in an introduction of a critical edition 
+of classical texts is too great to use these fields' names without mistake.
 
-The aim of this package is double:
+The aim of this package is twofold:
 
 \begin{itemize}
-\item Provides new datatype: \bibtype{manuscripts} with adapted fields.
+\item Provides new datatype: \bibtype{manuscripts} with appropriate fields.
 \item Provides new bibliography styles to print the list of manuscripts:
 \begin{itemize}
 	\item As a detailed list of witnesses of a text.
@@ -47,7 +51,10 @@ The aim of this package is double:
 You can see minimal example in the file \href{file:example.pdf}{example.pdf}.
 \subsection{Credits}
 
-This package was created for Maïeul Rouquette's PHD\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licenced on the \emph{\LaTeX\ Project Public Licence}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}.
+This package was created for Maïeul Rouquette's 
+PhD\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licenced on 
+the \emph{\LaTeX\ Project Public 
+Licence}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}.
 
 All issues can be submitted, in French or English, in the GitHub issues page\footnote{\url{https://github.com/maieul/biblatex-manuscripts-philology/issues}.}.
 
@@ -64,14 +71,18 @@ This bibtype has these mandatory fields:
 
 \begin{fieldlist}
 
-\fielditem{collection}{literal} the collection in the library. For example: \verb+Supplément grec+.
+\fielditem{collection}{literal} the collection in the library. For example: 
+\verb+Supplément grec+ or \verb+Vaidyaka+.
 
-\fielditem{location}{literal} the city or place where the manuscript is kept. For example: \verb+Paris+ or \verb+Oxford+.
+\fielditem{location}{literal} the city or place where the manuscript is kept. For 
+example: \verb+Paris+ or \verb+Oxford+ or \verb+Varanasi+.
 
-\fielditem{library}{literal} the library where the manuscript is kept. For example: \verb+Bibliothèque Nationale de France+.
+\fielditem{library}{literal} the library where the manuscript is kept. For example: 
+\verb+Bibliothèque nationale de France+ or \verb+Sarasvatī Bhavan Library+.
 
 
-\fielditem{shelfmark}{literal} the shelfmark in the collection. For example: \verb+241+.
+\fielditem{shelfmark}{literal} the shelfmark in the collection. For example: 
+\verb+241+.  Do not prefix with \enquote{MS}.
 \end{fieldlist}
 
 \subsection{Optional}
@@ -79,11 +90,20 @@ This bibtype can use the optional fields:
 
 \begin{fieldlist}
 
-\fielditem{bookpagination}{key} the pagination of the manuscript which is studied. The standard pagination keys are allowed, but the package add a new key: \texttt{folio}. The value of this field is to be used for printing the \bibfield{pages} and \bibfield{pagetotal}.
+\fielditem{bookpagination}{key} the pagination or foliation of the manuscript 
+which is studied. The standard \biblatex pagination keys are allowed, but the 
+package adds a new key: \texttt{folio}. 
+
+The value of this field will be used
+when printing the \bibfield{pages} and \bibfield{pagetotal}.
+E.g., ``ff.~3--5'' (when  \bibfield{bookpagination} =
+\enquote{folio}) or ``pp.~88--99'' (\enquote{page}).  See the \biblatex manual for details.
 
 \fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed: \verb+1+ or \verb+2+.
 
-\fielditem{dating}{literal} the dating of the manuscript. It can be for example a century.
+\fielditem{dating}{literal} the dating of the manuscript. It can be for example a 
+century.  
+
 
 \label{field:layer}\fielditem{layer}{key} for palimpsests, the layer which is studied. There is two possibility: 
 	\begin{description}
@@ -97,25 +117,46 @@ This bibtype can use the optional fields:
 \fielditem{shortlibrary}{literal} the abreviated form of the library. Not used by the default style.
 
 
-\fielditem{pages}{range} the pages which are studied in the manuscript. In this field, you can use the macros \cs{recto} and \cs{verso}.
+\fielditem{pages}{range} the pages which are studied in the manuscript. In this 
+field, you can use the macros \cs{recto} and \cs{verso}.  This value will be used 
+when formatting citations.
 
-\fielditem{pagetotal}{integer} the number of pages in the manuscript.
+Use this field also for manuscript folio numbers.  E.g., \enquote{3\cs{verso}--5\cs{recto}}.
+
+\fielditem{pagetotal}{integer} the number of pages or folios in the manuscript.
 
 
-\fielditem{pagination}{key} the pagination of part of manuscript which is studied. The standard pagination key are allowed, but the package add a new key: \verb+folio+.
+\fielditem{pagination}{key} the pagination of part of manuscript which is studied. 
+The standard pagination keys are allowed, but the package adds a new key: 
+\verb+folio+.  This value will control the formatting the 
+$\langle$\emph{postnote}$rangle$ argument of a citation command (see the 
+\biblatex manual for details).
 
 
 \fielditem{shorthand}{literal} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the version \opt{manuscript-noautoshorthand} is loaded. See \secref{noautoshorthand}.
 
-\fielditem{support}{key} the support of the manuscript, which will be translated in your work language. These keys are defined: \texttt{papyrus}, \texttt{paper}, \texttt{pergament}.
+\listitem{script}{key or literal} the script, i.e. the \emph{writing system} of the 
+manuscript (for example Devanāgarī, Śāradā, Cyrillic).
+ You can use or a key-value system, or just use literal value. No default keys are defined.
+ To define your own key, see \secref{key-definition}.
+ 
 
+ \fielditem{support}{key or literal} the support of the manuscript, which will be translated into your work language. These keys are defined: \begin{itemize}
+  \item \texttt{birch-bark};
+  \item \texttt{palm-leaf};
+  \item \texttt{papyrus};
+  \item \texttt{paper};
+  \item \texttt{parchment}.\footnote{Historically, 
+  the keyword was \texttt{pergament}, which is kept only for ascendant compatibility.}
+\end{itemize}
+ To define your own key, see \secref{key-definition}.
 \end{fieldlist}
 
 \subsection{Special}\label{fields:special}
 There are also two special fields, which are printed only if we ask for them explicitly:
 
 \begin{fieldlist}
-\fielditem{annotation}{literal} some annotation about the manuscript and its content. If you want to add paragraphs inside it, you must use the \cs{par} command between each paragraph.
+\fielditem{annotation}{literal} some annotation about the manuscript and its contents. If you want to add paragraphs inside it, you must use the \cs{par} command between each paragraph.
 
 
 \fielditem{catalog}{special} a list of catalogues which describe the manuscript. You must fill this field with arguments of a \cs{cites} command. For example:
@@ -126,6 +167,11 @@ There are also two special fields, which are printed only if we ask for them exp
   field2 = {value2},
   catalog = {[prenote1][postnote1]{key1}[prenote2][postnote2]{key2}}
 \end{minted}
+
+\fielditem{content}{literal} description of the manuscript's content, can be used 
+with or instead of \bibfield{annotation}. It starts a new block into the description 
+output. If you want to add paragraphs inside it, you must use the \cs{par} 
+command between each paragraph.  E.g., ``Covers chapters 1--3 only.''
 
 
 \fielditem{origin}{list} the places where the manuscript was written.
@@ -245,6 +291,30 @@ If you need more sorting scheme, please contact us, we could integrate them easi
  
 \section{Customization}
 
+\subsection{Create your own keys}\label{key-definition}
+
+The \bibfield{support} and \bibfield{script} fields can contains either literal string, either key that \biblatex will transform to a value.
+
+That use only standard \biblatex  localization string.
+ 
+To define your owns key, add into your preamble:
+\begin{minted}{tex}
+  \NewBibliographyString{<key1>}
+  \NewBibliographyString{<key2>}
+  …
+  \NewBibliographyString{<keyn>}
+  \DefineBibliographyStrings{%
+    <key1> = {<value1},
+    <key2> = {<value2>},
+    …,
+    <keyn> = {<valuen>}
+  }
+
+\end{minted}
+ 
+Where \meta{key1}, \meta{key2} \ldots\ \meta{keyn} must be replaced by the keys, and \meta{value1}, \meta{value2} \ldots\ \meta{valuen} by the value.
+ 
+
 \subsection{Commands}
 
 You can redefine, with \cs{renewcommand} some commands defined in \file{manuscripts.bbx}. The commands starting with \cs{mk...} take one argument, the other take no argument. In these command, use the punctuation commands of \biblatex.
@@ -264,7 +334,10 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 
 \csitem{mklocation} the way the \bibfield{location} is printed. By default, with the command \cs{mkbibnamefamily}.
 
-\csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special field. By default, in bold, following with \cs{manuscriptdescriptionlabelpunct}.
+\csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special fields. By default, in bold, followed with \cs{manuscriptdescriptionlabelpunct}.
+
+\csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special fields which can contains paragraph (e.g. \bibfield{content}.
+B default, in bold, followed with \cs{par}.
 
 \csitem{mkshcite} the way the shorthand is printed when using \cs{shcite}. By default, no special formatting.
 
@@ -293,10 +366,37 @@ The \file{manuscripts-shared.bbx} file defines bibmacros and field formats (read
 
 To use this package with the features of \verb+biblatex-realauthor+, you must use the package \verb+biblatex-multiple-dm+.
 
+\section{Migration to v.2.0.0}
 
+The version 2.0.0 adds some modification which could require modifications in your own customization.
+
+\begin{enumerate}
+  \item We have decided to prefix all bibmacros concerning manuscript with \verb+manuscript:+.
+    If you have redefined one of the following macros, or if you have created your own macros which call them, you should adapt your code:
+    \begin{itemize}
+      \item \verb+annotation+;
+      \item \verb+catalog+;
+      \item \verb|collection+shelfmark|;
+      \item \verb+date/dating+;
+      \item \verb|more+annotation+catalog|;
+    \end{itemize}
+  \item The \verb|support+dating| does not exist anymore.
+  \item Now, the annotation field is introduced with a label.
+ If you don't want this label, add into your preamble/custom style:
+ \begin{minted}{tex}
+   \DeclareFieldFormat{annotation}{#1}
+ \end{minted}
+\end{enumerate}
 \section{Change history}
 
 \begin{changelog}
+
+\begin{release}{2.0.0}{2018-09-19}
+  \item Add \bibfield{contents} and \bibfield{script} fields.
+  \item Add new support types.
+  \item Improve handbook (thanks to Dominik Wujastyk).
+  \item Really add italian translation.
+\end{release}
 
 \begin{release}{1.12.3}{2017-11-26}
   \item Add compatibility with biblatex 3.8.

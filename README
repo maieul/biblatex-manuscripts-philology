@@ -9,6 +9,8 @@ This work contains:
   - manuscripts.dbx
   - french-manuscripts.lbx
   - english-manuscripts.lbx
+	- italian-manuscripts.lbx
+	- manuscripts-NewBibliographyString.sty
 - The documentation folde:
   - biblatex-manuscripts-philology.tex
   - the derivated file: biblatex-manuscripts-philology.pdf

@@ -4,7 +4,7 @@ FILES = *.bbx *.dbx *.lbx documentation   makefile README
 dist: all
 	rm -rf biblatex-manuscripts-philology
 	mkdir biblatex-manuscripts-philology
-	ln README *bbx *dbx *lbx *makefile biblatex-manuscripts-philology
+	ln README *sty *bbx *dbx *lbx *makefile biblatex-manuscripts-philology
 	mkdir biblatex-manuscripts-philology/documentation
 	ln documentation/*tex documentation/*bib documentation/*pdf documentation/makefile  biblatex-manuscripts-philology/documentation
 	$(RM) ../biblatex-manuscripts-philology.zip

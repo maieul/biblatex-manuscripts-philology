@@ -12,41 +12,32 @@
 % 
 % The Current Maintainer of this work is Maïeul Rouquette
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
-\ProvidesFile{italian-manuscripts.lbx}[2017/11/26 v1.12.3 manuscripts biblatex localisation]%
+\ProvidesFile{italian-manuscripts.lbx}[2018/09/19 v2.0.0 manuscripts biblatex localisation]%
 \InheritBibliographyStrings{italian}
 \InheritBibliographyExtras{italian}
 
-\NewBibliographyString{1column}
-\NewBibliographyString{2column}
-\NewBibliographyString{catalog}
-\NewBibliographyString{folio}
-\NewBibliographyString{folios}
-\NewBibliographyString{foliototal}
-\NewBibliographyString{foliototals}
-\NewBibliographyString{inflayer}
-\NewBibliographyString{suplayer}
-\NewBibliographyString{origin}
-\NewBibliographyString{owner}
-\NewBibliographyString{paper}
-\NewBibliographyString{papyrus}
-\NewBibliographyString{pergament}
-\NewBibliographyString{scribe}
+\RequirePackage{manuscripts-NewBibliographyString}
 
 \DeclareBibliographyStrings{%
   1column = {{una colonna}{1\addnbspace col\adddot}},
   2column = {{due colonne}{2\addnbspace col\adddot}},
+  annotation = {{osservazioni}{osservazioni}},
+  birch-bark = {{corteccia di betulla}{corteccia di betulla}},
   catalog = {{catalogo}{cat\adddot}},
-  folio	  = {{folio}{f\adddot}},
-  folios  = {{folios}{ff\adddot}},
-  foliototal = {{folio}{f\adddot}},
-  foliototals = {{folios}{f\adddot}},
-  inflayer   = {{scrittura inferiore}{script\adddotspace inf\adddot}},
-  suplayer   = {{scrittura superiore}{script\adddotspace sup\adddot}},
+  contents = {{contenuto}{contenuto}},
+  folio	  = {{foglio}{f\adddot}},
+  folios  = {{fogli}{ff\adddot}},
+  foliototal = {{foglio}{f\adddot}},
+  foliototals = {{fogli}{f\adddot}},
+  inflayer   = {{scrittura inferiore}{scritt\adddotspace inf\adddot}},
+  suplayer   = {{scrittura superiore}{scritt\adddotspace sup\adddot}},
   origin  = {{origine}{orig\adddot}},
   owner   = {{possessore}{poss\adddot}},
-  paper   = {{carta}{chart\adddot}},
+  palm-leaf = {{foglia di palma}{f\adddotspace di palma}},
+  paper   = {{carta}{cart\adddot}},
   papyrus = {{papiro}{pap\adddot}},
-  pergament = {{pergamena}{membr\adddot}},
+  parchment = {{pergamena}{perg\adddot}},
+  pergament = {{pergamena}{perg\adddot}},% Kept for ascendant compatibility, cf. https://github.com/maieul/biblatex-manuscripts-philology/issues/6
   scribe  = {{scriba}{scr\adddot}}
 }
 

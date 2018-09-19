@@ -14,7 +14,7 @@
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
 \ProvidesFile{manuscripts-commons}
-[2017/11/26 1.12.3 biblatex bibliography style (MR)]%
+[2018/09/19 2.0.0 biblatex bibliography style (MR)]%
 
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
@@ -37,6 +37,7 @@
 \newcommand{\mkcolumnslayer}[1]{\addspace\mkbibparens{#1}}%
 \newcommand{\mklocation}[1]{\mkbibnamefamily{#1}}
 \newcommand{\mkmanuscriptdescriptionlabel}[1]{\textbf{#1}\manuscriptdescriptionlabelpunct}
+\newcommand{\mkmanuscriptdescriptionlabelparagraphed}[1]{\textbf{#1}\par}
 \newcommand{\mkshcite}[1]{#1}
 
 \newcommand{\locationlibrarypunct}{\addcolon\addspace}
@@ -54,10 +55,13 @@
 % 2. Some macros
 
 
-\newbibmacro{annotation}{%
-    \iffieldundef{annotation}{}{\printfield{annotation}}
+\newbibmacro{manuscript:annotation}{%
+    \printfield{annotation}%
 }
 
+\newbibmacro{manuscript:contents}{%
+    \printfield{contents}%
+}%
 \newbibmacro{manuscript:more}{%
     \printlist{origin}%
     \setunit*{\moreinterpunct}%
@@ -65,23 +69,24 @@
     \setunit*{\moreinterpunct}%
     \printnames{owner}%
 }
-\newbibmacro{more+annotation+catalog}{%
+\newbibmacro{manuscript:more+annotation+catalog}{%
   \iftoggle{shorthand:details}{%
     \setunit{\finentrypunct\par}%
 	\usebibmacro{manuscript:more}%
 	\setunit{\finentrypunct\par}%
-	\usebibmacro{annotation}%
+	\usebibmacro{manuscript:contents}%
 	\setunit{\finentrypunct\par}%
-	\usebibmacro{catalog}%
+	\usebibmacro{manuscript:annotation}%
+	\setunit{\finentrypunct\par}%
+	\usebibmacro{manuscript:catalog}%
   }{}%
 }
 
-\newbibmacro{catalog}{%
-  \iffieldundef{catalog}{}%
-    {\printfield{catalog}}%
+\newbibmacro{manuscript:catalog}{%
+  \printfield{catalog}%
 }
 
-\newbibmacro{collection+shelfmark}{%
+\newbibmacro{manuscript:collection+shelfmark}{%
   \printtext[collection+shelfmark]{%
 	  \printfield{collection}%
 	  \setunit*{\collectionshelfmarkpunct}%
@@ -89,7 +94,7 @@
 	}%
 }
 
-\newbibmacro{date/dating}{%
+\newbibmacro{manuscript:date/dating}{%
 	\iffieldundef{dating}{\usebibmacro{date}}
 	  {\printfield{dating}}%
 }
@@ -99,7 +104,7 @@
 	\setunit{\locationlibrarypunct}%
 	\printfield{library}%
 	\setunit{\librarycollectionpunct}%
-	\usebibmacro{collection+shelfmark}%
+	\usebibmacro{manuscript:collection+shelfmark}%
 }
   
 \newbibmacro{manuscript:pages}{%
@@ -138,11 +143,6 @@
   \iffieldundef{layer}{}{\bibstring[\mklayer]{\strfield{layer}layer}}%
 }%
 
-\newbibmacro{support+dating}{%
-  \printfield{support}%
-  \newunit%
-  \usebibmacro{date/dating}%
-  }
 
 % 3. Some Field or List Format
 \DeclareFieldFormat{catalog}{%
@@ -155,7 +155,13 @@
 \DeclareFieldFormat{columns+layer}{\mkcolumnslayer{#1}}%
 \DeclareFieldFormat{dating}{#1\isdot}%
 
-\DeclareFieldFormat{support}{\bibstring{#1}}%
+\DeclareFieldFormat{support}{\ifbibstring{#1}{\bibstring{#1}}{#1}}%
+\DeclareListFormat[]{script}{%
+  \ifnumgreater{\value{listcount}}{\value{liststart}}%
+    {\multilistdelim}%
+    {}%
+  \ifbibstring{#1}{\bibstring{#1}}{#1}%
+}%
 
 \DeclareNameFormat{manuscript}{%
   \nameparts{#1}%
@@ -179,6 +185,13 @@
     {\bibstring[\mkmanuscriptdescriptionlabel]{origin}}%
   #1%
   }
+
+\DeclareFieldFormat{manuscript:paragraphedfield}{%
+  \bibstring[\mkmanuscriptdescriptionlabelparagraphed]{\currentfield}%
+  #1%
+}%
+\DeclareFieldAlias{contents}{manuscript:paragraphedfield}%
+\DeclareFieldAlias{annotation}{manuscript:paragraphedfield}%
 
 % 4. Printshorthands Environment
 
@@ -211,7 +224,11 @@
   \newunit\newblock
   \printfield{note}%
   \newunit\newblock%
-  \usebibmacro{support+dating}%
+  \printfield{support}%
+  \newunit%
+  \printlist{script}%
+  \newunit%
+  \usebibmacro{manuscript:date/dating}%
   \setunit{\datingpagespunct}%
   \usebibmacro{manuscript:pages}%
   \iftoggle{bbx:related}%
@@ -223,7 +240,7 @@
   \iftoggle{bbx:url}%
     {\usebibmacro{url+urldate}}%
     {}%
-  \usebibmacro{more+annotation+catalog}%
+  \usebibmacro{manuscript:more+annotation+catalog}%
   \usebibmacro{finentry}%
   }
 
@@ -237,11 +254,11 @@
   \newunit\newblock%
   \printfield{note}%
   \newunit\newblock%
-  \usebibmacro{support+dating}%
+  \usebibmacro{manuscript:support+dating}%
   \newunit\newblock%
   \setunit{\datingpagespunct}%
   \usebibmacro{manuscript:pages}%
-  \usebibmacro{more+annotation+catalog}%
+  \usebibmacro{manuscript:more+annotation+catalog}%
   \usebibmacro{finentry}%
 }
 
@@ -263,6 +280,7 @@
 
 \DeclareLanguageMapping{english}{english-manuscripts}
 \DeclareLanguageMapping{french}{french-manuscripts}
+\DeclareLanguageMapping{italian}{italian-manuscripts}
 
 % 5.5 bibcheck
 
