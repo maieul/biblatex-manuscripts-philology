@@ -237,7 +237,7 @@ In this case, you must run two times biber: one after the first run of \LaTeX\ a
 
 If you use \opt{manuscripts-noautoshorthand} version, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
 
-\label{bibcheck}An other solution is to make two lists: one with manuscripts with shorthand and one with manuscript withoutshortands. You can add to your \cmd{printbiblography} or \cmd{printshorthands}  commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}. As you:
+\label{bibcheck}Another solution is to make two lists: one with manuscripts with shorthand and one with manuscript withoutshortands. You can add to your \cmd{printbiblography} or \cmd{printshorthands}  commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}. As you:
 \begin{minted}{latex}
 \printshorthands[
   type=manuscript,
@@ -270,7 +270,7 @@ For this purpose, you can use, the option \opt{sorting=manuscripts} of a \env{re
 You can use the special field \bibfield{sortshelfmark} if the way you shelf marks are sorted is not the way they are printed (like in normal entry type, you can use \bibfield{sorttitle}.
 
 However, using different sorting scheme for different bibliography in the same document implies that biber will insert many time the bibliographic entries in the \verb+.bbl+ file, once by sorting scheme.
-If you have a bib bibliography, that could make \LaTeX finishing the next run by a\\ \verb`TeX capacity exceeded, sorry [main memory size=<something>]`
+If you have a bib bibliography, that could make \LaTeX\ finishing the next run by a\\ \verb`TeX capacity exceeded, sorry [main memory size=<something>]`
 \\
 because this will full the memory\footnote{The problem should not happen if you use \LuaLaTeX, because, contrary to \XeLaTeX\ and \LaTeX, \LuaLaTeX\ has no limit in memory, except the limit of the computer\ldots\ which should be enough with recent computer.}.
 
