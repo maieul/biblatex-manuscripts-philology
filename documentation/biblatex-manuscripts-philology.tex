@@ -214,6 +214,19 @@ the full reference of the manuscript will be printed (see the example file). How
 \shcite{manuscriptkey}
 \end{minted}
 
+You can also use \cs{detailscite} to print the description of the manuscript including the \enquote{special} fields (\ref{fields:special}), like \bibfield{owner} and \bibfield{annotation}.
+ 
+\begin{minted}{latex}
+\detailscite{manuscriptkey}
+\end{minted}
+
+
+A \cs{detailscites} version of the commands does the same thing, but for multiple manuscripts.
+
+\begin{minted}{latex}
+\detailscites{manuscriptkey1}{manuscriptkey2}{…}{manuscriptkeyn}
+\end{minted}
+
 \subsection{List of manuscripts: \emph{conspectus siglorum}}
 
 You can use the standard command \cs{printshorthands} with appropriate options:
@@ -392,6 +405,7 @@ The version 2.0.0 adds some modification which could require modifications in yo
 \begin{changelog}
 
 \begin{release}{2.1.0}{2018-09-30}
+  \item Add \cs{detailcite} and \cs{detailscites} command.
   \item Add \option{env}=\cnt{details-noshorthand} to \cs{printbibliography}.
 \end{release}
 
