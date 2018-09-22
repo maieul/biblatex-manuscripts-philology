@@ -67,10 +67,24 @@
 	backend=biber,%
 	language=italian,%
 	autolang=other,%
-	bibstyle=manuscripts,%
+	%bibstyle=manuscripts-noautoshorthand,
+	bibstyle=manuscripts,
 	]{biblatex}
 \addbibresource{\jobname.bib}
 
 \begin{document}
-\detailscites{O}{Beinecke278}
+\cite{O}. \fullcite{O}
+
+\newpage
+\nocite{*}
+\printshorthands[type=manuscript,title=Shorthands]
+\printshorthands[type=manuscript,env=details,title=Shorthands with details]
+
+\printbibliography[type=manuscript,title=Bibliography]
+\printbibliography[type=manuscript,env=details,title=Bibliography with details]
+
+\printshorthands[type=manuscript,env=details,title=Withoutshorts,check=withoutshorthand]
+
+\printbibliography[type=manuscript,env=details,title=Withshorts,check=withshorthand]
+
 \end{document}
