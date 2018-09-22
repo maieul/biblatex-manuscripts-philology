@@ -239,16 +239,16 @@ In the previous example, with use one option to print shorthands only for manusc
 
 \subsection{List of manuscripts with detailed fields}
 
-If you want to print a list of manuscripts with detailed fields listed in \secref{fields:special}, just use the \opt{env} option, with value equal to
+If you want to print a list of manuscripts with detailed fields listed in \secref{fields:special}, just use the \opt{env} option, with value equals to
 \cnt{details}.
 
 \begin{minted}{latex}
 \printshorthands[type=manuscript,env=details,title=Description of manuscripts]
 \end{minted}
 
-In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a three time \LaTeX.
+In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a third time \LaTeX.
 
-If you use \opt{manuscripts-noautoshorthand} version, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
+If you use \opt{manuscripts-noautoshorthand} bibstyle, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
 
 \label{bibcheck}Another solution is to make two lists: one containing the manuscripts which have shorthand and one containing the manuscripts which have not shorthand. You can add to your \cmd{printbiblography} or \cmd{printshorthands}  commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}. As you:
 \begin{minted}{latex}
@@ -260,11 +260,22 @@ If you use \opt{manuscripts-noautoshorthand} version, this list could contain ma
 ]
 \printbibliography[
   type=manuscript,
+  env=details,
   title=Description of other manuscripts,
   check=withoutshorthand
 ]
 \end{minted}
 
+Maybe, you want to print the details but not the shorthand, even if the manuscripts have shorthands.
+In this case, use \cs{printbibliography} with  the \opt{env} option equals to
+\cnt{details-noshorthand}.
+\begin{minted}
+\printbibliography[
+  type=manuscript,
+  env=details-noshorthand,
+  title=Description of manuscripts,
+]
+\end{minted}
 \subsection{Sorting list of manuscripts without shorthand}
 
 \label{sorting} If you doesn't use the shorthands' feature, you can want to print a list of manuscripts, sorted by Town, Library, Collection, Shelfmark.
