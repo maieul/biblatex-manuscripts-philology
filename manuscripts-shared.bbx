@@ -46,6 +46,7 @@
 \newcommand{\pagetotalpagespunct}{\addcolon\addspace}
 \newcommand{\columnslayerpunct}{\addsemicolon\addspace}%
 
+\newcommand{\multidetailscitedelim}{\endgraf}
 
 \def\recto{r}
 \def\verso{v}
@@ -262,7 +263,7 @@
   \usebibmacro{finentry}%
 }
 
-%% 5.2 Citation command
+%% 5.2 Citation commands
 \DeclareCiteCommand{\shcite}[\mkshcite]
   {\usebibmacro{prenote}}
   {\usebibmacro{citeindex}%
@@ -271,6 +272,15 @@
   {\usebibmacro{cite:postnote}}
 
 
+\DeclareCiteCommand{\detailscite}%
+  {\usebibmacro{prenote}}%
+  {\usedriver%
+     {\toggletrue{shorthand:details}}%
+     {\thefield{entrytype}}}%
+  {\multidetailscitedelim}%
+  {\usebibmacro{postnote}}%
+
+\DeclareMultiCiteCommand{\detailscites}{\detailscite}{\multidetailscitedelim}%
 %% 5.3 NumCheckSetup (should not be changed)
 
 
