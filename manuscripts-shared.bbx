@@ -211,7 +211,17 @@
       \renewcommand*{\makelabel}[1]{##1\hss}}}
   {\endlist}
   {\item\iffieldundef{shorthand}{\hspace{-\labelwidth}\hspace{-\labelsep}}}
- 
+
+
+\defbibenvironment{details-noshorthand}
+  {\toggletrue{shorthand:details}%
+  \list{}{%
+     \leftmargin\bibhang
+     \itemindent-\leftmargin
+     \itemsep\bibitemsep
+     \parsep\bibparsep}}
+  {\endlist}
+  {\item}
 % 5. Others
 %% 5.1 Driver
 \DeclareBibliographyDriver{manuscript}{%
