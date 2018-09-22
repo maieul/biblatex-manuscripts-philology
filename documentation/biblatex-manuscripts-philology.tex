@@ -253,6 +253,16 @@ If you use \opt{manuscripts-noautoshorthand} bibstyle, this list could contain m
 ]
 \end{minted}
 
+Maybe, you want to print the details but not the shorthand, even if the manuscripts have shorthands.
+In this case, use \cs{printbibliography} with  the \opt{env} option equals to
+\cnt{details-noshorthand}.
+\begin{minted}
+\printbibliography[
+  type=manuscript,
+  env=details-noshorthand,
+  title=Description of manuscripts,
+]
+\end{minted}
 \subsection{Sorting list of manuscripts without shorthand}
 
 \label{sorting} If you doesn't use the shorthands' feature, you can want to print a list of manuscripts, sorted by Town, Library, Collection, Shelfmark.
