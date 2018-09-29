@@ -21,8 +21,8 @@
 	subtitle={New data types},
 	email={maieul <at> maieul <dot> net},
 	author={Maïeul Rouquette},
-	revision={2.0.0a},
-	date={20/09/2018},
+	revision={2.1.0},
+	date={30/09/2018},
 	url={https://github.com/maieul/biblatex-manuscripts-philology}}
 
 
@@ -153,7 +153,7 @@ manuscript (for example Devanāgarī, Śāradā, Cyrillic).
 \end{fieldlist}
 
 \subsection{Special}\label{fields:special}
-There are also two special fields, which are printed only if we ask for them explicitly:
+There are also many special fields, which are printed only if we ask for them explicitly:
 
 \begin{fieldlist}
 \fielditem{annotation}{literal} some annotation about the manuscript and its contents. If you want to add paragraphs inside it, you must use the \cs{par} command between each paragraph.
@@ -214,6 +214,19 @@ the full reference of the manuscript will be printed (see the example file). How
 \shcite{manuscriptkey}
 \end{minted}
 
+You can also use \cs{detailscite} to print the description of the manuscript including the \enquote{special} fields (\ref{fields:special}), like \bibfield{owner} and \bibfield{annotation}.
+ 
+\begin{minted}{latex}
+\detailscite{manuscriptkey}
+\end{minted}
+
+
+A \cs{detailscites} version of the commands does the same thing, but for multiple manuscripts.
+
+\begin{minted}{latex}
+\detailscites{manuscriptkey1}{manuscriptkey2}{…}{manuscriptkeyn}
+\end{minted}
+
 \subsection{List of manuscripts: \emph{conspectus siglorum}}
 
 You can use the standard command \cs{printshorthands} with appropriate options:
@@ -226,16 +239,16 @@ In the previous example, with use one option to print shorthands only for manusc
 
 \subsection{List of manuscripts with detailed fields}
 
-If you want to print a list of manuscripts with detailed fields listed in \secref{fields:special}, just use the \opt{env} option, with value equal to
+If you want to print a list of manuscripts with detailed fields listed in \secref{fields:special}, just use the \opt{env} option, with value equals to
 \cnt{details}.
 
 \begin{minted}{latex}
 \printshorthands[type=manuscript,env=details,title=Description of manuscripts]
 \end{minted}
 
-In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a three time \LaTeX.
+In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a third time \LaTeX.
 
-If you use \opt{manuscripts-noautoshorthand} version, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
+If you use \opt{manuscripts-noautoshorthand} bibstyle, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
 
 \label{bibcheck}Another solution is to make two lists: one containing the manuscripts which have shorthand and one containing the manuscripts which have not shorthand. You can add to your \cmd{printbiblography} or \cmd{printshorthands}  commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}. As you:
 \begin{minted}{latex}
@@ -247,11 +260,22 @@ If you use \opt{manuscripts-noautoshorthand} version, this list could contain ma
 ]
 \printbibliography[
   type=manuscript,
+  env=details,
   title=Description of other manuscripts,
   check=withoutshorthand
 ]
 \end{minted}
 
+Maybe, you want to print the details but not the shorthand, even if the manuscripts have shorthands.
+In this case, use \cs{printbibliography} with  the \opt{env} option equals to
+\cnt{details-noshorthand}.
+\begin{minted}
+\printbibliography[
+  type=manuscript,
+  env=details-noshorthand,
+  title=Description of manuscripts,
+]
+\end{minted}
 \subsection{Sorting list of manuscripts without shorthand}
 
 \label{sorting} If you doesn't use the shorthands' feature, you can want to print a list of manuscripts, sorted by Town, Library, Collection, Shelfmark.
@@ -336,7 +360,7 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 
 \csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special fields. By default, in bold, followed with \cs{manuscriptdescriptionlabelpunct}.
 
-\csitem{mkmanuscriptdescriptionlabel} the way the label are printed before the special fields which can contains paragraph (e.g. \bibfield{content}.
+\csitem{mkmanuscriptdescriptionlabelparagraphed} the way the label are printed before the special fields which can contains paragraph (e.g. \bibfield{content}.
 B default, in bold, followed with \cs{par}.
 
 \csitem{mkshcite} the way the shorthand is printed when using \cs{shcite}. By default, no special formatting.
@@ -390,6 +414,11 @@ The version 2.0.0 adds some modification which could require modifications in yo
 \section{Change history}
 
 \begin{changelog}
+
+\begin{release}{2.1.0}{2018-09-30}
+  \item Add \cs{detailcite} and \cs{detailscites} command.
+  \item Add \option{env}=\cnt{details-noshorthand} to \cs{printbibliography}.
+\end{release}
 
 \begin{release}{2.0.0}{2018-09-19}
   \item Add \bibfield{contents} and \bibfield{script} fields.
