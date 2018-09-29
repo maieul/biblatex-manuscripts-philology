@@ -32,9 +32,9 @@
 \tableofcontents
 \section{Introduction}
 \subsection{Goals}
-The \biblatex package defines some standard fields for entry, and allows the use 
-of extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of 
-extra fields needed to describe manuscripts in an introduction of a critical edition 
+The \biblatex package defines some standard fields for entry, and allows the use
+of extra fields, like \bibfield{usera}, \bibfield{userb}. However, the number of
+extra fields needed to describe manuscripts in an introduction of a critical edition
 of classical texts is too great to use these fields' names without mistake.
 
 The aim of this package is twofold:
@@ -51,9 +51,9 @@ The aim of this package is twofold:
 You can see minimal example in the file \href{file:example.pdf}{example.pdf}.
 \subsection{Credits}
 
-This package was created for Maïeul Rouquette's 
-PhD\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licenced on 
-the \emph{\LaTeX\ Project Public 
+This package was created for Maïeul Rouquette's
+PhD\footnote{\url{http://apocryphes.hypothese.org}.} in 2014. It is licenced on
+the \emph{\LaTeX\ Project Public
 Licence}\footnote{\url{http://latex-project.org/lppl/lppl-1-3c.html}.}.
 
 All issues can be submitted, in French or English, in the GitHub issues page\footnote{\url{https://github.com/maieul/biblatex-manuscripts-philology/issues}.}.
@@ -71,17 +71,17 @@ This bibtype has these mandatory fields:
 
 \begin{fieldlist}
 
-\fielditem{collection}{literal} the collection in the library. For example: 
+\fielditem{collection}{literal} the collection in the library. For example:
 \verb+Supplément grec+ or \verb+Vaidyaka+.
 
-\fielditem{location}{literal} the city or place where the manuscript is kept. For 
+\fielditem{location}{literal} the city or place where the manuscript is kept. For
 example: \verb+Paris+ or \verb+Oxford+ or \verb+Varanasi+.
 
-\fielditem{library}{literal} the library where the manuscript is kept. For example: 
+\fielditem{library}{literal} the library where the manuscript is kept. For example:
 \verb+Bibliothèque nationale de France+ or \verb+Sarasvatī Bhavan Library+.
 
 
-\fielditem{shelfmark}{literal} the shelfmark in the collection. For example: 
+\fielditem{shelfmark}{literal} the shelfmark in the collection. For example:
 \verb+241+.  Do not prefix with \enquote{MS}.
 \end{fieldlist}
 
@@ -90,9 +90,9 @@ This bibtype can use the optional fields:
 
 \begin{fieldlist}
 
-\fielditem{bookpagination}{key} the pagination or foliation of the manuscript 
-which is studied. The standard \biblatex pagination keys are allowed, but the 
-package adds a new key: \texttt{folio}. 
+\fielditem{bookpagination}{key} the pagination or foliation of the manuscript
+which is studied. The standard \biblatex pagination keys are allowed, but the
+package adds a new key: \texttt{folio}.
 
 The value of this field will be used
 when printing the \bibfield{pages} and \bibfield{pagetotal}.
@@ -101,14 +101,14 @@ E.g., ``ff.~3--5'' (when  \bibfield{bookpagination} =
 
 \fielditem{columns}{integer} the number of column by pages. Basically, only two numbers are allowed: \verb+1+ or \verb+2+.
 
-\fielditem{dating}{literal} the dating of the manuscript. It can be for example a 
-century.  
+\fielditem{dating}{literal} the dating of the manuscript. It can be for example a
+century.
 
 
-\label{field:layer}\fielditem{layer}{key} for palimpsests, the layer which is studied. There is two possibility: 
+\label{field:layer}\fielditem{layer}{key} for palimpsests, the layer which is studied. There is two possibility:
 	\begin{description}
 		\item[inf] for the inferior layer.
-		\item[sup] for the superior layer 
+		\item[sup] for the superior layer
 	\end{description}
 
 \fielditem{shortcollection}{literal} the abreviated form of the collection. Not used by the default style.\label{field:shortcollection}
@@ -117,8 +117,8 @@ century.
 \fielditem{shortlibrary}{literal} the abreviated form of the library. Not used by the default style.
 
 
-\fielditem{pages}{range} the pages which are studied in the manuscript. In this 
-field, you can use the macros \cs{recto} and \cs{verso}.  This value will be used 
+\fielditem{pages}{range} the pages which are studied in the manuscript. In this
+field, you can use the macros \cs{recto} and \cs{verso}.  This value will be used
 when formatting citations.
 
 Use this field also for manuscript folio numbers.  E.g., \enquote{3\cs{verso}--5\cs{recto}}.
@@ -126,27 +126,27 @@ Use this field also for manuscript folio numbers.  E.g., \enquote{3\cs{verso}--5
 \fielditem{pagetotal}{integer} the number of pages or folios in the manuscript.
 
 
-\fielditem{pagination}{key} the pagination of part of manuscript which is studied. 
-The standard pagination keys are allowed, but the package adds a new key: 
-\verb+folio+.  This value will control the formatting the 
-$\langle$\emph{postnote}$rangle$ argument of a citation command (see the 
+\fielditem{pagination}{key} the pagination of part of manuscript which is studied.
+The standard pagination keys are allowed, but the package adds a new key:
+\verb+folio+.  This value will control the formatting the
+$\langle$\emph{postnote}$rangle$ argument of a citation command (see the
 \biblatex manual for details).
 
 
 \fielditem{shorthand}{literal} the shorthand of the manuscript. If this field is empty, the entry key will be used as shorthand, except if the version \opt{manuscript-noautoshorthand} is loaded. See \secref{noautoshorthand}.
 
-\listitem{script}{key or literal} the script, i.e. the \emph{writing system} of the 
+\listitem{script}{key or literal} the script, i.e. the \emph{writing system} of the
 manuscript (for example Devanāgarī, Śāradā, Cyrillic).
  You can use or a key-value system, or just use literal value. No default keys are defined.
  To define your own key, see \secref{key-definition}.
- 
+
 
  \fielditem{support}{key or literal} the support of the manuscript, which will be translated into your work language. These keys are defined: \begin{itemize}
   \item \texttt{birch-bark};
   \item \texttt{palm-leaf};
   \item \texttt{papyrus};
   \item \texttt{paper};
-  \item \texttt{parchment}.\footnote{Historically, 
+  \item \texttt{parchment}.\footnote{Historically,
   the keyword was \texttt{pergament}, which is kept only for ascendant compatibility.}
 \end{itemize}
  To define your own key, see \secref{key-definition}.
@@ -168,9 +168,9 @@ There are also many special fields, which are printed only if we ask for them ex
   catalog = {[prenote1][postnote1]{key1}[prenote2][postnote2]{key2}}
 \end{minted}
 
-\fielditem{contents}{literal} description of the manuscript's contents, can be used 
-with or instead of \bibfield{annotation}. It starts a new block into the description 
-output. If you want to add paragraphs inside it, you must use the \cs{par} 
+\fielditem{contents}{literal} description of the manuscript's contents, can be used
+with or instead of \bibfield{annotation}. It starts a new block into the description
+output. If you want to add paragraphs inside it, you must use the \cs{par}
 command between each paragraph.  E.g., ``Covers chapters 1--3 only.''
 
 
@@ -215,7 +215,7 @@ the full reference of the manuscript will be printed (see the example file). How
 \end{minted}
 
 You can also use \cs{detailscite} to print the description of the manuscript including the \enquote{special} fields (\ref{fields:special}), like \bibfield{owner} and \bibfield{annotation}.
- 
+
 \begin{minted}{latex}
 \detailscite{manuscriptkey}
 \end{minted}
@@ -248,7 +248,7 @@ If you want to print a list of manuscripts with detailed fields listed in \secre
 
 In this case, you must run two times biber: one after the first run of \LaTeX\ and one after the second run, to add in the \file{.bbl} the catalogues. After that, run a third time \LaTeX.
 
-If you use \opt{manuscripts-noautoshorthand} bibstyle, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column. 
+If you use \opt{manuscripts-noautoshorthand} bibstyle, this list could contain manuscripts without shorthand. By default, the descriptions of such manuscripts will be aligned on the left of the shorthands column.
 
 \label{bibcheck}Another solution is to make two lists: one containing the manuscripts which have shorthand and one containing the manuscripts which have not shorthand. You can add to your \cmd{printbiblography} or \cmd{printshorthands}  commands a \opt{bibcheck} option, equal to \opt{withshorthand} or \opt{withoutshorthand}. As you:
 \begin{minted}{latex}
@@ -269,7 +269,7 @@ If you use \opt{manuscripts-noautoshorthand} bibstyle, this list could contain m
 Maybe, you want to print the details but not the shorthand, even if the manuscripts have shorthands.
 In this case, use \cs{printbibliography} with  the \opt{env} option equals to
 \cnt{details-noshorthand}.
-\begin{minted}
+\begin{minted}{latex}
 \printbibliography[
   type=manuscript,
   env=details-noshorthand,
@@ -280,7 +280,7 @@ In this case, use \cs{printbibliography} with  the \opt{env} option equals to
 
 \label{sorting} If you doesn't use the shorthands' feature, you can want to print a list of manuscripts, sorted by Town, Library, Collection, Shelfmark.
 
-For this purpose, you can use, the option \opt{sorting=manuscripts} of a \env{refcontext} environment. 
+For this purpose, you can use, the option \opt{sorting=manuscripts} of a \env{refcontext} environment.
 
 \begin{minted}{latex}
 \begin{refcontext}[sorting=manuscripts]{}
@@ -301,7 +301,7 @@ because this will full the memory\footnote{The problem should not happen if you 
 In order to prevent this, the package also provides sorting schemes to get the same sorting scheme for manuscripts and other entries, even if separated in the final bibliography.
 The following sorting schemes are adapted for the standard \biblatex\ sorting schemes:
 \begin{itemize}
-  \item \verb`nty+manuscripts`, adapted from \verb+nty+; 
+  \item \verb`nty+manuscripts`, adapted from \verb+nty+;
   \item \verb-nyt+manuscripts-, adapted from \verb-nyt-;
   \item \verb-nyvt+manuscripts-, adapted from \verb-nyvt-.
 \end{itemize}
@@ -312,7 +312,7 @@ To use these scheme, don't use \env{recontext} environment, but simply the globa
 \end{minted}
 
 If you need more sorting scheme, please contact us, we could integrate them easily.
- 
+
 \section{Customization}
 
 \subsection{Create your own keys}\label{key-definition}
@@ -320,7 +320,7 @@ If you need more sorting scheme, please contact us, we could integrate them easi
 The \bibfield{support} and \bibfield{script} fields can contains either literal string, either key that \biblatex will transform to a value.
 
 That use only standard \biblatex  localization string.
- 
+
 To define your owns key, add into your preamble:
 \begin{minted}{tex}
   \NewBibliographyString{<key1>}
@@ -335,9 +335,9 @@ To define your owns key, add into your preamble:
   }
 
 \end{minted}
- 
+
 Where \meta{key1}, \meta{key2} \ldots\ \meta{keyn} must be replaced by the keys, and \meta{value1}, \meta{value2} \ldots\ \meta{valuen} by the value.
- 
+
 
 \subsection{Commands}
 
@@ -348,7 +348,7 @@ You can redefine, with \cs{renewcommand} some commands defined in \file{manuscri
 
 \csitem{columnslayerpunct} the punctuation between \bibfield{columns} and \bibfield{layer}. By default \cs{addsemicolon}\cs{addspace}.
 
-\csitem{datingpagespunct} the punctuation between \bibfield{dating} and \bibfield{pages}. By default \cs{addcomma}\cs{addspace}. The \cs{isdot} is automatically called when printing \bibfield{dating} field. 
+\csitem{datingpagespunct} the punctuation between \bibfield{dating} and \bibfield{pages}. By default \cs{addcomma}\cs{addspace}. The \cs{isdot} is automatically called when printing \bibfield{dating} field.
 
 \csitem{librarycollectionpunct} the punctuation between \bibfield{library} and \bibfield{collection}. By default \cs{addcomma}\cs{addspace}.
 
@@ -417,7 +417,7 @@ The version 2.0.0 adds some modification which could require modifications in yo
 
 \begin{release}{2.1.0}{2018-09-30}
   \item Add \cs{detailcite} and \cs{detailscites} command.
-  \item Add \option{env}=\cnt{details-noshorthand} to \cs{printbibliography}.
+  \item Add \opt{env}=\cnt{details-noshorthand} to \cs{printbibliography}.
 \end{release}
 
 \begin{release}{2.0.0}{2018-09-19}
@@ -470,15 +470,15 @@ The version 2.0.0 adds some modification which could require modifications in yo
 	\item Insert good version number in the \cmd{ProvidesFile} commands.
 \end{release}
 
-\begin{release}{1.6.1}{2014-10-21}	
+\begin{release}{1.6.1}{2014-10-21}
   	\item Add \cs{isdot} after each printing of the \bibfield{dating} field, to allow to use abbreviations with a dot (like \enquote{c.}) without adding a uppercase after. Consequently, \cs{isdot} is deleted from \cs{datingpagespunct}.
 \end{release}
 
-\begin{release}{1.6.0}{2014-10-16}	
+\begin{release}{1.6.0}{2014-10-16}
   	\item Patching some bibmacros to prevent lost of manuscript descriptions when using  op. cit abreviation.
 \end{release}
 
-\begin{release}{1.5.0}{2014-10-08}	
+\begin{release}{1.5.0}{2014-10-08}
   	\item Formating of collection+shelfmark defined in a FielFormat.
 	\item Compatibility with \verb+chicago-notes+ styles.
 \end{release}
