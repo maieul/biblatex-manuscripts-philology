@@ -9,7 +9,7 @@
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is Maïeul Rouquette
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
@@ -107,7 +107,7 @@
 	\setunit{\librarycollectionpunct}%
 	\usebibmacro{manuscript:collection+shelfmark}%
 }
-  
+
 \newbibmacro{manuscript:pages}{%
 	\printfield{pagetotal}%
 	\iffieldundef{pages}%
@@ -120,7 +120,7 @@
 	  \printfield{pages}%
 	  \usebibmacro{manuscript:layer}%
 	  }%
-} 
+}
 
 \newbibmacro{manuscript:columns+layer}{%
  \ifboolexpr{test {\iffieldundef{columns}} or test{\iffieldundef{layer}}}{%
