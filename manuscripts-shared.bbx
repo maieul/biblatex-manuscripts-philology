@@ -13,8 +13,7 @@
 % The Current Maintainer of this work is Maïeul Rouquette
 % This work consists of the files manuscripts*.dbx, manuscripts*.bbx, manuscripts*.lbx
 
-\ProvidesFile{manuscripts-commons}
-[2019/10/02 v2.1.1 biblatex bibliography style (MR)]%
+\ProvidesFile{manuscripts-commons}[2020/01/07 v2.1.2 biblatex bibliography style (MR)]%
 
 \ifdef{\biblatexmultipledm@bibstyle}
 	{\RequireBibliographyStyle{\biblatexmultipledm@bibstyle}}
@@ -457,4 +456,7 @@
 \AtBeginDocument{%
 	\manuscriptaddshortened{cite:title,cite:short,cite:opcit}%
 }
+
+% New bibliography string
+\RequirePackage{manuscripts-NewBibliographyString}
 \endinput
